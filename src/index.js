@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // all in js
-import App from './App';//App.js
-import reportWebVitals from './reportWebVitals';
+import TodoList from './TodoList';//App.js
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <TodoList />
   </React.StrictMode>
 );
 
 
-reportWebVitals();
+
