@@ -1,4 +1,6 @@
 import React, {Component, Fragment} from 'react';
+import './style.css';
+
 
 class TodoList extends Component {
 
@@ -14,8 +16,14 @@ class TodoList extends Component {
         return (
             <Fragment>
             <div>
-                <input value={this.state.inputValue}
-                onChange={this.handleInputChange.bind(this)}
+                <label htmlFor="insertArea" >Input Content </label>
+                <input
+                    id="insertArea"
+                    type="text"
+                    className="input"
+                    placeholder="write something"
+                    value={this.state.inputValue}
+                    onChange={this.handleInputChange.bind(this)}
                 />
                 <button onClick={this.handleBtnClick.bind(this)}>Submit</button></div>
             <ul>
@@ -25,9 +33,9 @@ class TodoList extends Component {
                         <li
                             key={index}
                             onClick={this.handleItemDelete.bind(this, index)}
+                            dangerouslySetInnerHTML={{__html: item}}
                         >
-                            {item}
-                        </li>
+                         </li>
                         )
                     })
                 }
@@ -40,8 +48,11 @@ class TodoList extends Component {
   }
 
   handleInputChange(e) {
-        // need to use setState to change the state
-        // can not directly change the state @Date: 2025-01-21
+      // eslint-disable-next-line no-lone-blocks
+      {
+          //need to use setState to change the state
+        // can not directly change the state @Date: 2025-01-21*/
+      }
         this.setState({
             inputValue: e.target.value
         })
