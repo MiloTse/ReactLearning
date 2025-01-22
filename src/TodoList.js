@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
-import './style.css';
 import TodoItem from './TodoItem';
+import './style.css';
 
 class TodoList extends Component {
 
@@ -10,6 +10,13 @@ class TodoList extends Component {
             inputValue: '',
             list: []
         }
+
+        //optimize the performance
+        // bind the this to the component
+        this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleBtnClick = this.handleBtnClick.bind(this);
+        this.handleItemDelete = this.handleItemDelete.bind(this);
+
     }
 
     render() {
@@ -23,35 +30,17 @@ class TodoList extends Component {
                     className="input"
                     placeholder="write something"
                     value={this.state.inputValue}
-                    onChange={this.handleInputChange.bind(this)}
+                    onChange={this.handleInputChange}
                 />
-                <button onClick={this.handleBtnClick.bind(this)}>Submit</button></div>
+                <button onClick={this.handleBtnClick}>Submit</button></div>
             <ul>
                 {
-                    this.state.list.map((item, index) => {
-                        return (
-                        <div>
-                            {/*passing the props to the component*/}
-                            <TodoItem
-                                content={item}
-                                index={index}
-                                deleteItem={this.handleItemDelete.bind(this)}
 
-                            />
+                   this.getTodoItem()
 
 
-                            {
-                            /*<li
-                                key={index}
-                                onClick={this.handleItemDelete.bind(this, index)}
-                                dangerouslySetInnerHTML={{__html: item}}
-                            >
-                             </li>*/
-                            }
 
-                        </div>
-                        )
-                    })
+
                 }
 
 
@@ -61,29 +50,92 @@ class TodoList extends Component {
     );
   }
 
+  getTodoItem(){
+    return(
+
+        this.state.list.map((item, index) => {
+            return (
+                    <TodoItem
+                        key={index}
+                        content={item}
+                        index={index}
+                        deleteItem={this.handleItemDelete}
+                    />
+            )
+        })
+
+  )
+  }
+
   handleInputChange(e) {
       // eslint-disable-next-line no-lone-blocks
       {
           //need to use setState to change the state
         // can not directly change the state @Date: 2025-01-21*/
       }
-        this.setState({
+
+
+      //new way to set the state
+      const value = e.target.value;
+      //new way to set the state
+      this.setState(()=>({
+              inputValue: value
+          })
+      )
+
+
+
+
+
+
+
+
+
+
+
+
+
+      //old way to set the state
+      this.setState({
             inputValue: e.target.value
-        })
-        console.log(this);//need to use bind() function to bind the this to the component
+      })
+      console.log(this);//need to use bind() function to bind the this to the component
         // this.state.inputValue = e.target.value;
         // console.log(e.target.value);
   }
 
   handleBtnClick() {
-        this.setState({
+        this.setState((prevState)=>({
+            list: [...prevState.list, prevState.inputValue],
+            //empty the input value
+            inputValue: ''
+        }))
+
+
+
+
+
+/*        this.setState({
             list: [...this.state.list, this.state.inputValue],
             //empty the input value
             inputValue: ''
-        })
+        })*/
   }
 
     handleItemDelete(index){
+        this.setState((prevState)=>{
+            const list = [...prevState.list];
+            list.splice(index, 1);
+            return {list}
+        });
+
+
+
+
+
+
+
+/*
         // expend the list and merge the list. copyOf
          const list = [...this.state.list];
         //delete the item at the index, delete one item
@@ -92,7 +144,7 @@ class TodoList extends Component {
             //change the copy list instead of this.state.list
             // immutable: state not allow to be changed directly
             list: list
-        })
+        })*/
         console.log(index);
     }
 }

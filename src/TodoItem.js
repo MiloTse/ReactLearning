@@ -9,6 +9,7 @@ class TodoItem extends Component {
     }
 
     render() {
+        const { content } = this.props;
         return (
             <div
                 onClick={this.handleClick}>
@@ -20,8 +21,11 @@ class TodoItem extends Component {
 
     handleClick() {
         {/*child component invoke parent component's func should bind this on parent component*/}
-        this.props.deleteItem(this.props.index);
-        alert(this.props.index)
+/*        this.props.deleteItem(this.props.index);
+        alert(this.props.index);*/
+
+        const { deleteItem, index} = this.props;
+        deleteItem(index);
     }
 }
 
