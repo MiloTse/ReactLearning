@@ -10,17 +10,30 @@ class TodoList extends Component {
         }
     }
 
-  render() {
-    return (
-        <Fragment>
+    render() {
+        return (
+            <Fragment>
             <div>
                 <input value={this.state.inputValue}
                 onChange={this.handleInputChange.bind(this)}
                 />
-                <button>Submit</button></div>
+                <button onClick={this.handleBtnClick.bind(this)}>Submit</button></div>
             <ul>
-                <li>Learn English</li>
-                <li>Learning React</li>
+                {
+                    this.state.list.map((item, index) => {
+                        return (
+                        <li
+                            key={index}
+                            onClick={this.handleItemDelete.bind(this, index)}
+                        >
+                            {item}
+                        </li>
+                        )
+                    })
+                }
+
+
+
             </ul>
         </Fragment>
     );
@@ -36,6 +49,28 @@ class TodoList extends Component {
         // this.state.inputValue = e.target.value;
         // console.log(e.target.value);
   }
+
+  handleBtnClick() {
+        this.setState({
+            list: [...this.state.list, this.state.inputValue],
+            //empty the input value
+            inputValue: ''
+        })
+  }
+
+    handleItemDelete(index){
+        // expend the list and merge the list. copyOf
+         const list = [...this.state.list];
+        //delete the item at the index, delete one item
+        list.splice(index, 1);
+        this.setState({
+            //change the copy list instead of this.state.list
+            // immutable: state not allow to be changed directly
+            list: list
+        })
+        console.log(index);
+    }
 }
+
 
 export default TodoList;
