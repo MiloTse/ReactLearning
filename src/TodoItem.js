@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import PropTypes from "prop-types";
 
 class TodoItem extends Component {
 
@@ -9,11 +9,12 @@ class TodoItem extends Component {
     }
 
     render() {
-        const { content } = this.props;
+        const { content, test } = this.props;
         return (
             <div
                 onClick={this.handleClick}>
-                {this.props.content}
+
+                {test} - {content}
             </div>
         )
     }
@@ -29,5 +30,19 @@ class TodoItem extends Component {
     }
 }
 
+//对TodoItem组件的属性进行类型检查
+//可以使用PropTypes.oneOfType([PropTypes.string, PropTypes.number])来检查属性值的类型
+// PropTypes.string.isRequired表示content属性是必填的
+// PropTypes.func.defaultValue表示deleteItem属性是可选的，默认值为null
+TodoItem.propTypes = {
+    test: PropTypes.string.isRequired,
+    content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    deleteItem: PropTypes.func,
+    index: PropTypes.number
+}
+
+TodoItem.defaultProps = {
+    test: 'hello word'
+}
 
 export default TodoItem;
