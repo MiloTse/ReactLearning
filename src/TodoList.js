@@ -56,11 +56,12 @@ class TodoList extends Component {
 
   getTodoItem(){
     return(
-
+        // avoiding use index as key, for avoiding inconsistency
+        //key={index} -> key={item}
         this.state.list.map((item, index) => {
             return (
                     <TodoItem
-                        key={index}
+                        key={item}
                         content={item}
                         index={index}
                         deleteItem={this.handleItemDelete}

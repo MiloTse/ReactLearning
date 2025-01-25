@@ -10,6 +10,10 @@ class TodoItem extends Component {
 
     render() {
         const { content, test } = this.props;
+        // JSX -> createElement -> virtual DOM(JS object)->  Real DOM;
+        // return <div><span>item</span></div>
+        //  return React.createElement('div', {}, React.createElement('span',{},'item'));
+
         return (
             <div
                 onClick={this.handleClick}>
