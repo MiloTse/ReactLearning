@@ -1,7 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import TodoItem from './TodoItem';
-import Test from './Test';
-import './style.css';
+ import './style.css';
 
 class TodoList extends Component {
 
@@ -34,9 +33,10 @@ class TodoList extends Component {
                     placeholder="write something"
                     value={this.state.inputValue}
                     onChange={this.handleInputChange}
+                    ref={(input) => {this.input = input}}
                 />
                 <button onClick={this.handleBtnClick}>Submit</button></div>
-            <ul>
+            <ul ref={(ul) => {this.ul = ul}}>
                 {
 
                    this.getTodoItem()
@@ -49,7 +49,6 @@ class TodoList extends Component {
 
 
             </ul>
-                <Test content={this.state.inputValue}/>
         </Fragment>
     );
   }
@@ -79,9 +78,10 @@ class TodoList extends Component {
         // can not directly change the state @Date: 2025-01-21*/
       }
 
-
+      console.log(e.target);
       //new way to set the state
-      const value = e.target.value;
+      const value = this.input.value;
+      // const value = e.target.value;
       //new way to set the state
       this.setState(()=>({
               inputValue: value
@@ -114,10 +114,16 @@ class TodoList extends Component {
             list: [...prevState.list, prevState.inputValue],
             //empty the input value
             inputValue: ''
-        }))
+        })
+            ,()=>{
+            //should put here inside callback function
+            //this will exec after the setState function
+             console.log(this.ul.querySelectorAll('div').length);
+            }
+        )
 
-
-
+        //should not put here
+        console.log(this.ul.querySelectorAll('div').length);
 
 
 /*        this.setState({
