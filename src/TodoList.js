@@ -20,6 +20,12 @@ class TodoList extends Component {
 
     }
 
+    //在组件即将被挂载到页面的时刻自动执行
+    componentWillMount() {
+        console.log('componentWillMount');
+    }
+
+
     render() {
         console.log('render');
         return (
@@ -52,6 +58,36 @@ class TodoList extends Component {
         </Fragment>
     );
   }
+
+
+    //组件被挂载到页面之后，自动被执行
+    componentDidMount() {
+        console.log('componentDidMount');
+    }
+
+    //组件被更新之前， 他会被自动仔细-也是生命周期函数
+    shouldComponentUpdate() {
+        console.log('shouldComponentUpdate');
+        return true;
+    }
+
+    //组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后
+    // 如果shouldComponentUpdate返回true它才执行
+    // 如果返回false，这个函数就不会被执行了
+    componentWillUpdate() {
+        console.log('componentWillUpdate');
+     }
+
+     //组件更新完成之后，它会被执行
+    componentDidUpdate() {
+        console.log('componentDidUpdate');
+    }
+
+    //
+    componentWillReceiveProps() {
+        console.log('componentWillReceiveProps');
+    }
+
 
   getTodoItem(){
     return(
