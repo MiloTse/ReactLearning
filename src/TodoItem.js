@@ -3,22 +3,31 @@ import PropTypes from "prop-types";
 
 class TodoItem extends Component {
 
+    //作用域放到构造器保证只会渲染一次，提升性能
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
     }
 
+    // setState 降低虚拟DOM的渲染次数
+    shouldComponentUpdate(nextProps, nextState) {
+        if (nextProps.content !== this.props.content) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     render() {
-        const { content, test } = this.props;
+        console.log('child render');
+        const { content } = this.props;
         // JSX -> createElement -> virtual DOM(JS object)->  Real DOM;
         // return <div><span>item</span></div>
         //  return React.createElement('div', {}, React.createElement('span',{},'item'));
 
         return (
-            <div
-                onClick={this.handleClick}>
-
-                {test} - {content}
+            <div onClick={this.handleClick}>
+                {content}
             </div>
         )
     }
@@ -34,17 +43,6 @@ class TodoItem extends Component {
     }
 
 
-    //一个组件要从父组件接受参数
-    //如果这个组件第一次存在于父组件中，不会执行
-    //如果这个组件之前已经存在于父组件中，才会执行
-    componentWillReceiveProps() {
-        console.log('child componentWillReceiveProps');
-    }
-
-    //当这个组件即将被从页面中剔除的时候，会被执行
-     componentWillUnmount() {
-        console.log('child componentWillUnmount');
-    }
 }
 
 //对TodoItem组件的属性进行类型检查
@@ -58,8 +56,6 @@ TodoItem.propTypes = {
     index: PropTypes.number
 }
 
-TodoItem.defaultProps = {
-    test: 'hello word'
-}
+
 
 export default TodoItem;

@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import TodoItem from './TodoItem';
  import './style.css';
+import axios from "axios";
 
 class TodoList extends Component {
 
@@ -20,15 +21,15 @@ class TodoList extends Component {
 
     }
 
-    //在组件即将被挂载到页面的时刻自动执行
-    componentWillMount() {
-        console.log('componentWillMount');
-    }
 
 
     render() {
-        console.log('render');
-        return (
+        //不能在这里发ajax请求，会存在循环的问题
+        // let result = {}
+        // this.ajax().then((res)=>{result = res});
+
+
+         return (
             <Fragment>
             <div>
                 <label htmlFor="insertArea" >Input Content </label>
@@ -59,37 +60,19 @@ class TodoList extends Component {
     );
   }
 
+  //ajax 请求发送应该放这里,只执行一次。在组件被挂载到页面的时候执行一次
+  componentDidMount() {
+        axios.get('/api/todolist')
+            .then(() => {alert('success')})
+            .catch(() => {alert('error')})
 
-    //组件被挂载到页面之后，自动被执行
-    componentDidMount() {
-        console.log('componentDidMount');
-    }
-
-    //组件被更新之前， 他会被自动仔细-也是生命周期函数
-    shouldComponentUpdate() {
-        console.log('shouldComponentUpdate');
-        return true;
-    }
-
-    //组件被更新之前，它会自动执行，但是他在shouldComponentUpdate之后
-    // 如果shouldComponentUpdate返回true它才执行
-    // 如果返回false，这个函数就不会被执行了
-    componentWillUpdate() {
-        console.log('componentWillUpdate');
-     }
-
-     //组件更新完成之后，它会被执行
-    componentDidUpdate() {
-        console.log('componentDidUpdate');
-    }
-
-    //
-    componentWillReceiveProps() {
-        console.log('componentWillReceiveProps');
-    }
+  }
+  //发ajax请求也可以放这里，但是会跟其他的生命周期函数一起执行，所以不推荐
+  componentWillMount() {
+  }
 
 
-  getTodoItem(){
+    getTodoItem(){
     return(
         // avoiding use index as key, for avoiding inconsistency
         //key={index} -> key={item}
@@ -108,15 +91,9 @@ class TodoList extends Component {
   }
 
   handleInputChange(e) {
-      // eslint-disable-next-line no-lone-blocks
-      {
-          //need to use setState to change the state
-        // can not directly change the state @Date: 2025-01-21*/
-      }
 
-      console.log(e.target);
-      //new way to set the state
-      const value = this.input.value;
+       //new way to set the state
+      const value = e.target.value;
       // const value = e.target.value;
       //new way to set the state
       this.setState(()=>({
