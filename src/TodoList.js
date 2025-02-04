@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import TodoItem from './TodoItem';
- import './style.css';
+import './style.css';
 import axios from "axios";
 
 class TodoList extends Component {
@@ -62,9 +62,18 @@ class TodoList extends Component {
 
   //ajax 请求发送应该放这里,只执行一次。在组件被挂载到页面的时候执行一次
   componentDidMount() {
+
         axios.get('/api/todolist')
-            .then(() => {alert('success')})
-            .catch(() => {alert('error')})
+            // .then(() => {alert('success')})
+            .then((res) => {
+                console.log(res.data);
+                this.setState(()=> ({
+                    list: [...res.data]
+                }) )
+            })
+            .catch(() => {
+                // alert('error')
+            })
 
   }
   //发ajax请求也可以放这里，但是会跟其他的生命周期函数一起执行，所以不推荐
