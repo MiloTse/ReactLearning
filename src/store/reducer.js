@@ -18,6 +18,11 @@ export default (state = defaultState, action)=>{
         newState.inputValue = '';//clear
         return newState;
     }
+    if(action.type === 'delete_todo_item'){
+        const newState = JSON.parse(JSON.stringify(state));
+        newState.list.splice(action.index, 1);
+         return newState;
+    }
     console.log(state, action);
     return state;
 }
