@@ -1,6 +1,10 @@
 function Board(props) {
 return (
-    'board'
+    <>
+        <div className='board-row'>1</div>
+        <div className='board-row'>2</div>
+        <div className='board-row'>3</div>
+    </>
     )
 }
 
