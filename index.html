@@ -38,14 +38,14 @@
         ]
 
         //页面组件 JSX grammar
-        function MyApp(){
+        function MyProducts(){
             //useState 是一个hook，它允许你在函数组件中添加状态
             const result = React.useState(0);
 
             // should use useState hook on outer function
-            function add(){
+/*            function add(){
                     const [count, setCount] = React.useState(0);
-            }
+            }*/
 
             const count = result[0];
             const setCount = result[1];
@@ -76,6 +76,14 @@
              )
         }
 
+        function MyApp() {
+            return (
+                <div>
+                    <MyProducts/>
+                    <MyProducts/>
+                </div>
+            )
+        }
         // 获取一个页面的根节点
         const rootNode = document.getElementById('root')
         //创建一个React 实例
