@@ -15,9 +15,7 @@
     <script type="text/babel">
         //组件就是页面的上的一部分
         function LikeButton(){
-            return React.createElement('button',{
-                onClick:() => { console.log('button clicked')}
-            }, 'Click Me')
+            return <button onClick={()=>{console.log('button clicked')}}>click me</button>
         }
         // 获取一个页面的根节点
         const rootNode = document.getElementById('root')
