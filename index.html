@@ -48,7 +48,10 @@
 
                 return  <li key={product.id}
                             style={{color: product.type === 'vegetable' ? 'green' : 'red'}}
-                    >
+                    onClick={()=>{
+                        alert(product.title);
+                    }}
+                >
                     {product.title}
                 </li>
             })
