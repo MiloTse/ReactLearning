@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>React Startup</title>
+    <style>
+        .test{
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
 <div id="root"></div>
@@ -13,18 +18,13 @@
     <script src="./babel.min.js"></script>
 
     <script type="text/babel">
-        //组件就是页面的上的一部分
-        function MyButton(){
-            return (
-                <button> Im  a button</button>
-            )
-        }
-        //页面组件
+        const welcomeStr = "welcome to React";
+        //页面组件 JSX grammar
         function MyApp(){
             return (
                 <div>
-                    <h1> Hello World</h1>
-                    <MyButton/>
+                    <h1 className="test"> {welcomeStr}</h1>
+
                 </div>
             )
         }
