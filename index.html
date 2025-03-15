@@ -19,11 +19,14 @@
 
     <script type="text/babel">
         const welcomeStr = "welcome to React";
+        const styleobject={
+            color:"blue"
+        }
         //页面组件 JSX grammar
         function MyApp(){
             return (
                 <div>
-                    <h1 className="test"> {welcomeStr ? "exist" : "not exist"}</h1>
+                    <h1 className="test" style={ styleobject}> {welcomeStr  }</h1>
 
                 </div>
             )
