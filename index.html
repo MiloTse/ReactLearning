@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React Startup</title>
+</head>
+<body>
+<div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"crossorigin>
+
+    </script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"  crossorigin>
+
+    </script>
+
+    <script>
+        function LikeButton(){
+            return React.createElement('button',{
+                onClick:() => { console.log('button clicked')}
+            }, 'Click')
+        }
+        const rootNode = document.getElementById('root')
+        const root = ReactDOM.createRoot(rootNode);
+        root.render(React.createElement(LikeButton));
+    </script>
+
+</body>
+
+
+
+</html>
