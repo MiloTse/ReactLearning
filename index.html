@@ -19,15 +19,35 @@
 
     <script type="text/babel">
         const welcomeStr = "welcome to React";
-        // const styleobject={
-        //     color:"blue"
-        // }
+        const styleobject={
+            color:"blue"
+        }
+        const isLogin = true;
+
+        //登录子组件
+        function Login(){
+            return (
+                <div>
+                    <h1>登录组件</h1>
+                </div>
+            )
+        }
+        //非登录子组件
+        function NotLogin(){
+            return (
+                <div>
+                    <h1>非登录组件</h1>
+                </div>
+            )
+        }
+
+
         //页面组件 JSX grammar
         function MyApp(){
             return (
                 <div>
-                    <h1 className="test" style={{color:"green"}}> {welcomeStr  }</h1>
-
+                    <h1 className="test" style={styleobject}> {welcomeStr  }</h1>
+                    {isLogin ? <Login /> : <NotLogin /> }
                 </div>
             )
         }
