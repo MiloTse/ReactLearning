@@ -24,32 +24,35 @@
         }
         const isLogin = false;
 
-        //登录子组件
-        function Login(){
-            return (
-                <div>
-                    <h1>登录组件</h1>
-                </div>
-            )
-        }
-        //非登录子组件
-        function NotLogin(){
-            return (
-                <div>
-                    <h1>非登录组件</h1>
-                </div>
-            )
-        }
-
+        const products = [
+            {
+                title:'Cabbage',
+                id:1
+            },
+            {
+                title:'Garlic',
+                id:2
+            },
+            {
+                title:'Apple',
+                id:3
+            }
+        ]
 
         //页面组件 JSX grammar
         function MyApp(){
-            const content = isLogin ? <Login /> : <NotLogin />;
-            return (
-                <div>
-                    <h1 className="test" style={styleobject}> {welcomeStr  }</h1>
-                    {content}
-                </div>
+            const listItems = products.map((product)=>{
+
+                return  <li key={product.id}>{product.title}</li>
+            })
+
+
+
+             return (
+                <ul>
+                    {listItems}
+
+                </ul>
             )
         }
         // 获取一个页面的根节点
