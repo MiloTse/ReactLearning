@@ -9,9 +9,18 @@ import {useState} from "react";
 
         const clickHandler = (index) =>{
             console.log(index);
-            const newSquares = squares.slice();
-            newSquares[index] = 'X';
-            setSquares(newSquares);
+
+            const currentSquares = squares[index];
+            if(currentSquares==null){
+                const filledSquare = squares.filter(item=>(item==='X' || item==='O'));
+                const filledNumber = filledSquare.length;
+                const nextLetter = (filledNumber%2===0)?'X':'O';
+
+                const newSquares = squares.slice();
+                newSquares[index] = nextLetter;
+                setSquares(newSquares);
+            }
+
         }
 
         return (
