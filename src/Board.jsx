@@ -9,6 +9,9 @@ import {useState} from "react";
 
         const clickHandler = (index) =>{
             console.log(index);
+            const newSquares = squares.slice();
+            newSquares[index] = 'X';
+            setSquares(newSquares);
         }
 
         return (
