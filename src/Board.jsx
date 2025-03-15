@@ -1,24 +1,28 @@
-function Board(props) {
-return (
-    <>
-        <div className='board-row'>
-            <div className='square'>1</div>
-            <div className='square'>2</div>
-            <div className='square'>3</div>
-        </div>
-        <div className='board-row'>
-            <div className='square'>4</div>
-            <div className='square'>5</div>
-            <div className='square'>6</div>
-        </div>
-        <div className='board-row'>
-            <div className='square'>7</div>
-            <div className='square'>8</div>
-            <div className='square'>9</div>
+import Square from "./Square";
 
-        </div>
-    </>
-    )
-}
 
-export default Board;
+
+    function Board(props) {
+    return (
+        <>
+            <div className='board-row'>
+                <Square value="1"/>
+                <Square value="2"/>
+                <Square value="3"/>
+
+            </div>
+            <div className='board-row'>
+                    <Square value="4"/>
+                    <Square value="5"/>
+                    <Square value="6"/>
+            </div>
+            <div className='board-row'>
+                <Square value="7"/>
+                <Square value="8"/>
+                <Square value="9"/>
+            </div>
+        </>
+        )
+        }
+
+            export default Board;
