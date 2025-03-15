@@ -47,7 +47,8 @@
             return (
                 <div>
                     <h1 className="test" style={styleobject}> {welcomeStr  }</h1>
-                    {isLogin ? <Login /> : <NotLogin /> }
+                    {isLogin && <Login /> }
+                    {!isLogin && <NotLogin /> }
                 </div>
             )
         }
