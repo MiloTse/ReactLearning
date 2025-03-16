@@ -2,11 +2,10 @@ import Square from "./Square";
 import {useState} from "react";
 
 
-function getNextLetter(squares){
+function getNextPlay(squares){
     const filledSquare = squares.filter(item=>(item==='X' || item==='O'));
     const filledNumber = filledSquare.length;
-    const nextLetter = (filledNumber%2===0)?'X':'O';
-    return nextLetter;
+    return (filledNumber%2===0) ? 'X' : 'O';
 }
 
 function calculateWinner(squares) {
@@ -23,67 +22,60 @@ function calculateWinner(squares) {
     for (let i = 0; i < winConditions.length; i++) {
         const [a, b, c] = winConditions[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return 'Winner is : ' + squares[a];
+            return squares[a];
         }
     }
     return null;
  }
 
-    function Board(props) {
-        //
-        const [squares, setSquares] = useState(Array(9).fill(null));
-        const nextLetter = getNextLetter(squares);
+function Board(props) {
+    //
+    const [squares, setSquares] = useState(Array(9).fill(null));
+    const nextPlay = getNextPlay(squares);
 
 
 
-        const winner = calculateWinner(squares);
+    const winner = calculateWinner(squares);
+    const status = winner ? `${winner} is winner` : `Next player: ${nextPlay}`;
+/*       let status = null;
+    if(winner){
+        status = winner;
+    }else if(nextLetter){
+        status = `Next player: ${nextLetter}`;
+    }*/
 
-        let status = null;
-        if(winner){
-            status = winner;
-        }else if(nextLetter){
-            status = `Next player: ${nextLetter}`;
+    const clickHandler = (index) =>{
+        console.log(index);
+        const currentSquares = squares[index];
+        if(currentSquares==null){
+            const newSquares = squares.slice();
+            newSquares[index] = nextPlay;
+            setSquares(newSquares);
         }
 
+    }
 
+    return (
+        <>
+            <div>{status}</div>
+            <div className='board-row'>
+                <Square value={squares[0]} index={0} onClick={clickHandler}/>
+                <Square value={squares[1]} index={1} onClick={clickHandler}/>
+                <Square value={squares[2]} index={2} onClick={clickHandler}/>
 
-        const clickHandler = (index) =>{
-            console.log(index);
+            </div>
+            <div className='board-row'>
+                    <Square value={squares[3]} index={3} onClick={clickHandler}/>
+                    <Square value={squares[4]} index={4} onClick={clickHandler}/>
+                    <Square value={squares[5]} index={5} onClick={clickHandler}/>
+            </div>
+            <div className='board-row'>
+                <Square value={squares[6]} index={6} onClick={clickHandler}/>
+                <Square value={squares[7]} index={7} onClick={clickHandler}/>
+                <Square value={squares[8]} index={8} onClick={clickHandler}/>
+            </div>
+        </>
+        )
+    }
 
-
-
-            const currentSquares = squares[index];
-            if(currentSquares==null){
-
-
-                const newSquares = squares.slice();
-                newSquares[index] = nextLetter;
-                setSquares(newSquares);
-            }
-
-        }
-
-        return (
-            <>
-                <div>{status}</div>
-                <div className='board-row'>
-                    <Square value={squares[0]} index={0} onClick={clickHandler}/>
-                    <Square value={squares[1]} index={1} onClick={clickHandler}/>
-                    <Square value={squares[2]} index={2} onClick={clickHandler}/>
-
-                </div>
-                <div className='board-row'>
-                        <Square value={squares[3]} index={3} onClick={clickHandler}/>
-                        <Square value={squares[4]} index={4} onClick={clickHandler}/>
-                        <Square value={squares[5]} index={5} onClick={clickHandler}/>
-                </div>
-                <div className='board-row'>
-                    <Square value={squares[6]} index={6} onClick={clickHandler}/>
-                    <Square value={squares[7]} index={7} onClick={clickHandler}/>
-                    <Square value={squares[8]} index={8} onClick={clickHandler}/>
-                </div>
-            </>
-            )
-        }
-
-            export default Board;
+export default Board;
