@@ -14,7 +14,11 @@ function getNextLetter(squares){
         //
         const [squares, setSquares] = useState(Array(9).fill(null));
         const nextLetter = getNextLetter(squares);
-        const status = nextLetter;
+        let status = null;
+
+        if(nextLetter){
+            status = `Next player: ${nextLetter}`;
+        }
 
 
         const clickHandler = (index) =>{
