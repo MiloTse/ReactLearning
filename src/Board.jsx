@@ -25,17 +25,19 @@ function calculateWinner(squares) {
             return squares[a];
         }
     }
+    const filledSquare = squares.filter(item=>(item==='X' || item==='O'));
+    if(filledSquare.length===9){
+        return 'No One';
+    }
     return null;
  }
 
 function Board(props) {
-    //
     const [squares, setSquares] = useState(Array(9).fill(null));
     const nextPlay = getNextPlay(squares);
-
-
-
+    //determine which letter is the winner
     const winner = calculateWinner(squares);
+    //determine the status of winner of draw next letter
     const status = winner ? `${winner} is winner` : `Next player: ${nextPlay}`;
 /*       let status = null;
     if(winner){
@@ -44,6 +46,7 @@ function Board(props) {
         status = `Next player: ${nextLetter}`;
     }*/
 
+    //function to handle click event
     const clickHandler = (index) =>{
         console.log(index);
         const currentSquares = squares[index];
