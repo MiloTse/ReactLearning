@@ -20,3 +20,15 @@
     text-align: center;
 
 }
+
+.game {
+    display: flex;
+}
+
+.game-board {
+    width: 200px;
+}
+
+.game-history {
+    flex: 1;
+}
