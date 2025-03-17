@@ -1,5 +1,5 @@
-function Hello({ msg, show}){ //解构
-    return  show ? <div> {msg} </div> : null;
+function Hello({ show}){ //解构
+    return  show ? <div> Hello wa </div> : null;
 
 }
 

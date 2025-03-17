@@ -1,20 +1,20 @@
 import Hello from './Hello.jsx';
 import Bye from './Bye.jsx';
+
+
+//pure component
+//1.职责明确
+//2.给固定的输入固定的输出
 function App (){
 
-    const text = 'This is text';
-    const flag = true;
-
-    const helloMsg = 'Hello aaa';
-    const byeMsg = 'Bye Warren';
-    const showMsg = true;
+    const status = true;
     //JSX is not HTML
     return(
         <>
 
-            <Hello show={showMsg} msg={helloMsg}/>
+            <Hello show={status}  />
 
-            <Bye show={showMsg} msg={byeMsg}/>
+            <Bye show={status}  />
          </>
     );
 }
