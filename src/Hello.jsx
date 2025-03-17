@@ -1,9 +1,6 @@
-function Hello(){
-    return(
-        <div>
-            <h1>Hello World2</h1>
-        </div>
-    );
+function Hello({msg}){ //解构
+    return  <div>  {msg}   </div>
+
 }
 
 export default Hello;

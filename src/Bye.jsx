@@ -1,11 +1,5 @@
-function Bye() {
-    return (
-        <div>
-            <h1>Bye</h1>
-            <p>Goodbye</p>
-        </div>
-
-    )
+function Bye({msg}) {
+    return  <div> {msg} </div>
 }
 
 
