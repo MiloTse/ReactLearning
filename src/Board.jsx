@@ -8,7 +8,7 @@ function getNextPlay(squares){
 }
 
 
-function Board({squares, winner, setSquares}) {
+function Board({squares, winner, onChange}) {
     // const [squares, setSquares] = useState(Array(9).fill(null));
     const nextPlay = getNextPlay(squares);
     //determine which letter is the winner
@@ -29,7 +29,7 @@ function Board({squares, winner, setSquares}) {
         if(currentSquares==null){
             const newSquares = squares.slice();
             newSquares[index] = nextPlay;
-            setSquares(newSquares);
+            onChange(newSquares);
         }
 
     }

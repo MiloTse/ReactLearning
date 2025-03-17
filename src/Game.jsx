@@ -33,15 +33,24 @@ function calculateWinner(squares) {
 
 function Game  () {
     const [squares, setSquares]= useState(Array(9).fill(null));
+    const [history, setHistory] = useState([Array(9).fill(null)]);
+
     //是否已经存在胜利者
     const winner = calculateWinner(squares);
+
+
+    const handleSquareChange = (newSquares) => {
+        setSquares(newSquares);
+        setHistory([...history, newSquares]);
+    }
+
     return (
         <div className="game">
             <div className="game-board">
-                <Board squares={squares} winner={winner} setSquares={setSquares}/>
+                <Board squares={squares} winner={winner} onChange={handleSquareChange}/>
             </div>
             <div className="game-history">
-                {winner ? <History/> : null }
+                {winner ? <History history={history}/> : null }
             </div>
         </div>
     )
