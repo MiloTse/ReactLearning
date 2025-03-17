@@ -3,6 +3,7 @@ import Bye from './Bye.jsx';
 function App (){
 
     const text = 'This is text';
+    const flag = false;
     //JSX is not HTML
     return(
         <>
@@ -11,6 +12,7 @@ function App (){
             <Hello />
             <h1>{text}</h1>
             <Bye />
+            <div>{flag? 'a true' : 'a false'}</div>
         </>
     );
 }
