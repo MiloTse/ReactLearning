@@ -3,6 +3,7 @@ import Bye from './Bye.jsx';
 function App (){
 
     const text = 'This is text';
+    //JSX is not HTML
     return(
         <>
             <div>Lesson 12</div>
