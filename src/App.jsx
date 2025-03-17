@@ -1,6 +1,4 @@
-import Hello from './Hello.jsx';
-import Bye from './Bye.jsx';
-
+import Child from './Child.jsx';
 
 //pure component
 //1.职责明确
@@ -11,11 +9,8 @@ function App (){
     //JSX is not HTML
     return(
         <>
-
-            <Hello show={status}  />
-
-            <Bye show={status}  />
-         </>
+            <Child />
+          </>
     );
 }
 
