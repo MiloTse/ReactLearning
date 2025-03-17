@@ -34,9 +34,13 @@ function calculateWinner(squares) {
 function Game  () {
     const [squares, setSquares]= useState(Array(9).fill(null));
     const [history, setHistory] = useState([Array(9).fill(null)]);
-
+    const [winner,setWinner] = useState(undefined);
+    if(!winner){
+        const result =calculateWinner(squares);
+        result && setWinner(result);
+    }
     //是否已经存在胜利者
-    const winner = calculateWinner(squares);
+    // const winner = calculateWinner(squares);
 
     //通过onChange事件传递一个函数给Board组件
     const handleSquareChange = (newSquares) => {

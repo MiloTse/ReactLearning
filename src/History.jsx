@@ -3,7 +3,7 @@ function History({history,onChange}) {
     const historyItems = history.map((item, index) => {
         return (
 
-            <li className="history-item" onClick={()=>onChange(index)}>
+            <li key={index} className="history-item" onClick={()=>onChange(index)}>
 
                 This is step {index+1}
 
