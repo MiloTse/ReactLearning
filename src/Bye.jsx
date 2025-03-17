@@ -1,5 +1,5 @@
-function Bye({msg}) {
-    return  <div> {msg} </div>
+function Bye({msg, show}) {
+    return  show ? <div> {msg} </div> : null;
 }
 
 

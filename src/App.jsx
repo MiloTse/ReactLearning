@@ -3,20 +3,19 @@ import Bye from './Bye.jsx';
 function App (){
 
     const text = 'This is text';
-    const flag = false;
+    const flag = true;
 
-    const helloMsg = 'Hello';
+    const helloMsg = 'Hello aaa';
     const byeMsg = 'Bye Warren';
+    const showMsg = true;
     //JSX is not HTML
     return(
         <>
-            <div>Lesson 12</div>
-            <span>span</span>
-            <Hello msg={helloMsg}/>
-            <h1>{text}</h1>
-            <Bye msg={byeMsg}/>
-            <div>{flag? 'a true' : 'a false'}</div>
-        </>
+
+            <Hello show={showMsg} msg={helloMsg}/>
+
+            <Bye show={showMsg} msg={byeMsg}/>
+         </>
     );
 }
 
