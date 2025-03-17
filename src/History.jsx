@@ -1,7 +1,15 @@
-function History({history}) {
+function History({history,onChange}) {
 
     const historyItems = history.map((item, index) => {
-        return <li className="history-item">This is step {index+1}</li>
+        return (
+
+            <li className="history-item" onClick={()=>onChange(index)}>
+
+                This is step {index+1}
+
+            </li>
+
+            )
     })
     return (
         <div>

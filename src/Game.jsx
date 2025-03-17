@@ -38,10 +38,15 @@ function Game  () {
     //是否已经存在胜利者
     const winner = calculateWinner(squares);
 
-
+    //通过onChange事件传递一个函数给Board组件
     const handleSquareChange = (newSquares) => {
         setSquares(newSquares);
         setHistory([...history, newSquares]);
+    }
+
+    const handleHistoryChange = (index) => {
+        const newSquares = history[index];
+        setSquares(newSquares);
     }
 
     return (
@@ -50,7 +55,7 @@ function Game  () {
                 <Board squares={squares} winner={winner} onChange={handleSquareChange}/>
             </div>
             <div className="game-history">
-                {winner ? <History history={history}/> : null }
+                {winner ? <History history={history} onChange={handleHistoryChange}/> : null }
             </div>
         </div>
     )
