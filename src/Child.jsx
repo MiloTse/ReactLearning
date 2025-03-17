@@ -1,5 +1,5 @@
 function Child(){ //解构
-    return  <div onClick={()=>{alert('Child component')}}> Child  </div>;
+    return  <input onInput={(e)=>console.log(e.target.value)}/>
 
 }
 
