@@ -1,10 +1,11 @@
-
-
+import Hello from './Hello.jsx';
+import Bye from './Bye.jsx';
 function App (){
     return(
-        <div>
-            <h1>Hello World</h1>
-        </div>
+        <>
+            <Hello />
+            <Bye />
+        </>
     );
 }
 
