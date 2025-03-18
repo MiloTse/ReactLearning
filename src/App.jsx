@@ -22,7 +22,7 @@ function App (){
     }
 
     return (
-        <div onClick={ ()=>{handleClick()}  }>
+        <div onClick={ handleClick  } style={{color : 'red'}}>
             <p onClick={handleInnerClick}>{count}</p>
         </div>
 
