@@ -1,22 +1,32 @@
  import {useImmer} from 'use-immer';
+ import {useState} from "react";
 
-//immutable programming rules:
+let index = 0;
+
+ //immutable programming rules:
 function App (){
-    const [data, setData ]= useImmer( {
-                count : 0
-    });
-    const handleClick = ()=>{
-        setData((draft)=>{
-            draft.count = draft.count + 1;
-        })
-     }
+    const [list, setList ]= useState( []);
+    function handleClick() {
+        const newList = [...list, index];
+         setList(newList);
+         index = index + 1;
+    }
 
     return (
-        <div onClick={ handleClick  }  >
-            {data.count}
-         </div>
+        <>
+            <div onClick={handleClick}>
+                Add Item
+            </div>
+            {
+
+                list.map((item => {
+                    return <div key={item}>{item}</div>
+                }))
+            }
+        </>
+
 
     )
 }
 
-export default App;
+ export default App;
