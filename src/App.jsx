@@ -1,17 +1,10 @@
-import Child from './Child.jsx';
+import {useState} from "react";
 
-//pure component
-//1.职责明确
-//2.给固定的输入固定的输出
+
 function App (){
 
-    const status = true;
-    //JSX is not HTML
-    return(
-        <>
-            <Child onAbc={() => console.log('abc')}/>
-          </>
-    );
+    const [name, setName] = useState('warren');
+    return <div>{name}</div>
 }
 
 export default App;
