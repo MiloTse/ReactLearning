@@ -7,8 +7,11 @@ function App (){
                 count : 0
     });
     const handleClick = ()=>{
-        data.count = 123;
-        setData(data);
+        const newData = {
+            count : data.count + 1
+        }
+        // data.count = 123;//not allowed
+        setData(newData);
     }
 
     return (
