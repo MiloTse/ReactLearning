@@ -22,7 +22,7 @@ function App (){
     }
 
     return (
-        <div onClick={handleClick}>
+        <div onClick={ ()=>{handleClick()}  }>
             <p onClick={handleInnerClick}>{count}</p>
         </div>
 
