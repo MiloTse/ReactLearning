@@ -1,30 +1,20 @@
 import {useState} from "react";
 
 
-//1. trigger -> render(virtual dom) -> commit
-//2. virtual dom: 真实dom的一个js对象表达
-//3. 快照态的数据
-//4. batch update
+//immutable programming rules:
 function App (){
-
-    const [count, setCount ]= useState( 0);
-/*    const result = useState( 0);
-    const count= result[0];
-    const setCount = result[1];*/
-
+    const [data, setData ]= useState( {
+                count : 0
+    });
     const handleClick = ()=>{
-        setCount( count+ 1);
-    }
-    const handleInnerClick = (e)=>{
-        //no stopPropagation will trigger parent click and count++
-        e.stopPropagation();
-        alert('inner click');
+        data.count = 123;
+        setData(data);
     }
 
     return (
-        <div onClick={ handleClick  } style={{color : 'red'}}>
-            <p onClick={handleInnerClick}>{count}</p>
-        </div>
+        <div onClick={ handleClick  }  >
+            {data.count}
+         </div>
 
     )
 }
