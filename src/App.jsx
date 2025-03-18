@@ -3,10 +3,19 @@ import {useState} from "react";
 
 function App (){
 
-    const [name, setName] = useState('warren');
-    // let name = 'warren';
+    const [userInfo, setUserInfo ]= useState({
+        name: 'warren',
+        age: 25,
+        sex: 'male'
+    });
+
+    const handleClick = ()=>{
+        userInfo.name = 'xxx';
+        setUserInfo(userInfo)
+    }
+
     return (
-        <div onClick={()=>{setName('xxx')}}>{name}</div>
+        <div onClick={handleClick}>{userInfo.name}</div>
     )
 }
 
