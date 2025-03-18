@@ -1,17 +1,16 @@
-import {useState} from "react";
-
+ import {useImmer} from 'use-immer';
 
 //immutable programming rules:
 function App (){
-    const [data, setData ]= useState( {
+    const [data, setData ]= useImmer( {
                 count : 0
     });
     const handleClick = ()=>{
-        const newData = {
+   /*     const newData = {
             count : data.count + 1
-        }
-        // data.count = 123;//not allowed
-        setData(newData);
+        }*/
+        data.count = 123;//not allowed
+        setData(data);
     }
 
     return (
