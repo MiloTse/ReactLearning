@@ -6,11 +6,11 @@ function App (){
                 count : 0
     });
     const handleClick = ()=>{
-   /*     const newData = {
+        const newData = {
             count : data.count + 1
-        }*/
-        data.count = 123;//not allowed
-        setData(data);
+        }
+        // data.count = 123;//not allowed
+        setData(newData);
     }
 
     return (
