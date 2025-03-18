@@ -6,12 +6,10 @@ function App (){
                 count : 0
     });
     const handleClick = ()=>{
-        const newData = {
-            count : data.count + 1
-        }
-        // data.count = 123;//not allowed
-        setData(newData);
-    }
+        setData((draft)=>{
+            draft.count = draft.count + 1;
+        })
+     }
 
     return (
         <div onClick={ handleClick  }  >
