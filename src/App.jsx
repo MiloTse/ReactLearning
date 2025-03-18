@@ -1,25 +1,25 @@
 import {useState} from "react";
 
 
+//1. trigger -> render(virtual dom) -> commit
+//2. virtual dom: 真实dom的一个js对象表达
+//3. 快照态的数据
+//4. batch update
 function App (){
 
-    const [userInfo, setUserInfo ]= useState({
-        name: 'warren',
-        age: 25,
-        sex: 'male'
-    });
+    // const [count, setCount ]= useState( 0);
+    const result = useState( 0);
+    const count= result[0];
+    const setCount = result[1];
 
     const handleClick = ()=>{
-        //copy userInfo object, has a different reference memory address
-        const newUserInfo = {...userInfo};
-        //change the new copy object's name
-        newUserInfo.name = 'mike';
-        //assign the new copy object to userInfo through setUserInfo
-        setUserInfo(newUserInfo)
+        setCount(count + 1);
+        setCount(count + 1);
+        setCount(count + 1);
     }
 
     return (
-        <div onClick={handleClick}>{userInfo.name}</div>
+        <div onClick={handleClick}>{count}</div>
     )
 }
 
