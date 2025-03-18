@@ -10,8 +10,12 @@ function App (){
     });
 
     const handleClick = ()=>{
-        userInfo.name = 'xxx';
-        setUserInfo(userInfo)
+        //copy userInfo object, has a different reference memory address
+        const newUserInfo = {...userInfo};
+        //change the new copy object's name
+        newUserInfo.name = 'mike';
+        //assign the new copy object to userInfo through setUserInfo
+        setUserInfo(newUserInfo)
     }
 
     return (
