@@ -13,9 +13,11 @@ function App (){
     const setCount = result[1];
 
     const handleClick = ()=>{
-        setCount(count + 1);
-        setCount(count + 1);
-        setCount(count + 1);
+        setCount(( count) => count+ 1);
+        setCount(( count) => count+ 1);
+        setCount(( count) => count+ 1);
+
+
     }
 
     return (
