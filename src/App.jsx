@@ -7,21 +7,25 @@ import {useState} from "react";
 //4. batch update
 function App (){
 
-    // const [count, setCount ]= useState( 0);
-    const result = useState( 0);
+    const [count, setCount ]= useState( 0);
+/*    const result = useState( 0);
     const count= result[0];
-    const setCount = result[1];
+    const setCount = result[1];*/
 
     const handleClick = ()=>{
-        setCount(( count) => count+ 1);
-        setCount(( count) => count+ 1);
-        setCount(( count) => count+ 1);
-
-
+        setCount( count+ 1);
+    }
+    const handleInnerClick = (e)=>{
+        //no stopPropagation will trigger parent click and count++
+        e.stopPropagation();
+        alert('inner click');
     }
 
     return (
-        <div onClick={handleClick}>{count}</div>
+        <div onClick={handleClick}>
+            <p onClick={handleInnerClick}>{count}</p>
+        </div>
+
     )
 }
 
