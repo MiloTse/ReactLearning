@@ -9,7 +9,7 @@ function App (){
     //JSX is not HTML
     return(
         <>
-            <Child />
+            <Child onAbc={() => console.log('abc')}/>
           </>
     );
 }

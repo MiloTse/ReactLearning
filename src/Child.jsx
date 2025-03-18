@@ -1,5 +1,5 @@
-function Child(){ //解构
-    return  <input onInput={(e)=>console.log(e.target.value)}/>
+function Child({onAbc}){ //解构
+    return  <input onInput={onAbc}/>
 
 }
 
