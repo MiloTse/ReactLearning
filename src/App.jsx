@@ -33,6 +33,7 @@ function App() {
             type: 'add',
             value: inputValue,
         };
+        dispatch(action);
 
 
 
