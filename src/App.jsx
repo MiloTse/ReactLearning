@@ -13,6 +13,8 @@ function App() {
             value: inputValue,
         }];
         setList(newList);
+        //eliminate the value of input
+        setInputValue('');
     }
 
     return (
