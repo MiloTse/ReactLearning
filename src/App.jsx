@@ -12,6 +12,10 @@ import {useState} from "react";
 // 声明式开发的例子： React 16.8 之后的 useReducer， React 17 之后的 useReducer， React 18 之后的 useReducer
 // 声明式开发的例子： React 16.8 之后的 useContext， React 17 之后的 useContext， React 18 之后的 useContext
 // 声明式开发的例子： React 16.8 之后的 useMemo， React 17 之后的 useMemo， React 18 之后的 useMemo
+
+// 1.避免数据冗余重复
+// 2.同类型数据尽量合并
+// 3.数据结构能浅不深
 function App() {
 
     const [user, setUser] = useImmer({
