@@ -1,10 +1,11 @@
 import {useState} from "react";
 
-function Email({useColor}) {
+function Email({to}) {
 
     return (
         <div>
-             Email
+             <p>To: {to}</p>
+            <div>Content: <input/> </div>
         </div>
     )
 
