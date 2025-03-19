@@ -1,15 +1,9 @@
-import Counter from './Counter';
-import {useState} from "react";
+import Email from './Email';
 
 function App() {
-    const [show, setShow] = useState(true);
-    const [useColor, setUseColor] = useState(true);
      return (
          <div>
-             <Counter />
-             {show? <Counter /> : null}
-             {useColor? <Counter useColor={useColor}/> : <Counter/>}
-             <button onClick={() => {setUseColor(!useColor)}}>Button</button>
+             <Email to="test@test.com" />
          </div>
     )
 }
