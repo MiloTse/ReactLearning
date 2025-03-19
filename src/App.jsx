@@ -18,7 +18,12 @@ function App() {
     }
 
     function handleItemClick(index) {
-        const newList = list.splice(index, 1);
+        // const newList = list.splice(index, 1);
+        // setList(newList);
+
+        //should use this way
+        const newList = [...list];
+        newList.splice(index, 1);
         setList(newList);
     }
 
