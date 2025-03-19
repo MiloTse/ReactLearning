@@ -29,6 +29,15 @@ function App() {
     }
 
     function handleButtonClick() {
+        const action = {
+            type: 'add',
+            value: inputValue,
+        };
+
+
+
+
+
      /*   const newList = [...list, {
             id: inputValue,
             value: inputValue,
