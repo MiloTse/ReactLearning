@@ -4,26 +4,38 @@ import {useState, useReducer} from "react";
 
 //reducer 使用流程
 //1.定义数据
-//2.定义Action发送改变数据的指令
-//3.拿到Action之后，dispatch方法派发Action
-//4.根据指令修改数据
-//5. 完成数据的修改
+//2.定义Reducer 函数
+//3.定义Action发送改变数据的指令
+//4.拿到Action之后，dispatch方法派发Action
+//5.根据指令修改数据
+//6. 完成数据的修改
+
+function listReducer(state, action) {
+
+     return state;
+
+}
+
 
 function App() {
-    const[inputValue, setInputValue] = useState('');
-    const[list, setList] = useState([]);
+    const [inputValue, setInputValue] = useState('');
+    // const [list, setList] = useState([]);
+    const [list, dispatch] = useReducer(listReducer, [{
+        id: 1,
+        value: 22,
+    }]);
     function handleInputChange(event) {
         setInputValue(event.target.value);
     }
 
     function handleButtonClick() {
-        const newList = [...list, {
+     /*   const newList = [...list, {
             id: inputValue,
             value: inputValue,
         }];
         setList(newList);
         //eliminate the value of input
-        setInputValue('');
+        setInputValue('');*/
     }
 
     function handleItemClick(index) {
@@ -31,9 +43,9 @@ function App() {
         // setList(newList);
 
         //should use this way
-        const newList = [...list];
+/*        const newList = [...list];
         newList.splice(index, 1);
-        setList(newList);
+        setList(newList);*/
     }
 
     return (
