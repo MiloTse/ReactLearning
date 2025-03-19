@@ -17,6 +17,13 @@ function App() {
         setInputValue('');
     }
 
+    function handleItemClick(index) {
+        const newList = list.splice(index, 1);
+        setList(newList);
+    }
+
+
+
     return (
          <div>
              <div>
@@ -26,7 +33,9 @@ function App() {
              <ul>
                  {
                      list.map((item)=>
-                        <li key={item.id}>
+                        <li key={item.id}
+                            onClick={()=>handleItemClick()}
+                        >
                             {item.value}
                         </li>
                      )
