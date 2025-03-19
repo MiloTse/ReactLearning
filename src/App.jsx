@@ -24,10 +24,11 @@ function App() {
                  <button onClick={handleButtonClick}>submit</button>
              </div>
              <ul>
-
                  {
                      list.map((item)=>
-                        <li key={<item key={item.id}>{item.value}</item>} >{item.value}</li>
+                        <li key={item.id}>
+                            {item.value}
+                        </li>
                      )
                  }
 
