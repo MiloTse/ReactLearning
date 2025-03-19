@@ -6,7 +6,9 @@ function App() {
 
      return (
          <div>
-             <Email to={to} />
+              {
+                 (to==='default') ? <Email to={to} /> : <div><Email to={to} /></div>
+             }
              <button onClick={()=>{setTo('Warren')}}>Send</button>
          </div>
     )
