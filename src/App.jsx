@@ -11,15 +11,21 @@ import {useState, useReducer} from "react";
 //6. 完成数据的修改， return 新数据
 
 function listReducer(state, action) {
-    switch (action.type) {
-    case 'add':
-            return [...state, {
-                id: action.value,
-                value: action.value,
-            }];
+    if(action.type === 'add') {
+        const newState = [...state, {
+            id: action.value,
+            value: action.value,
+        }];
+        return newState;
     }
-     return state;
 
+    if(action.type === 'delete') {
+        const newState = [...state];
+        //delete count:1 from the passing action.value
+        newState.splice(action.value, 1);
+        return newState;
+    }
+    return state;
 }
 
 
@@ -45,13 +51,12 @@ function App() {
     }
 
     function handleItemClick(index) {
-        // const newList = list.splice(index, 1);
-        // setList(newList);
+        const action = {
+            type: 'delete',
+            value: index,
+        }
+        dispatch(action);
 
-        //should use this way
-/*        const newList = [...list];
-        newList.splice(index, 1);
-        setList(newList);*/
     }
 
     return (
