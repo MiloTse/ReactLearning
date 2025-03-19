@@ -14,19 +14,25 @@ import {useState} from "react";
 // 声明式开发的例子： React 16.8 之后的 useMemo， React 17 之后的 useMemo， React 18 之后的 useMemo
 function App() {
 
-    const [firstName, setFirstName] = useImmer('');
-    const [lastName, setLastName] = useImmer('');
-    //空字符串没必要用immer，用useState就可以了
-    const [fullName, setFullName] = useState('');
+    const [user, setUser] = useImmer({
+        firstName: '',
+        lastName: '',
+
+    });
+
 
 
     function handleFirstNameChange(e){
-      setFirstName(e.target.value);
-      setFullName(e.target.value + '' + lastName);
+        setUser((draft) => {
+            draft.firstName = e.target.value;
+            draft.fullName = draft.firstName + '' + draft.lastName;
+        })
     }
     function handleLastNameChange(e) {
-      setLastName(e.target.value);
-      setFullName(firstName +' ' + e.target.value);
+        setUser((draft) => {
+            draft.lastName = e.target.value;
+            draft.fullName = draft.firstName + '' + draft.lastName;
+        })
 
     }
 
@@ -34,9 +40,8 @@ function App() {
 
     return <div>
         First Name:<input onChange={handleFirstNameChange}/>
-        Last Name <input onChange={(e)=> {setLastName(e.target.value)}} />
-        Full Name: {firstName} {lastName}
-        Full Name2: {fullName}
+        Last Name <input onChange={handleLastNameChange} />
+        Full Name(use user object) : {user.firstName} {user.lastName}
 
 
     </div>
