@@ -40,18 +40,8 @@ function App() {
             value: inputValue,
         };
         dispatch(action);
-
-
-
-
-
-     /*   const newList = [...list, {
-            id: inputValue,
-            value: inputValue,
-        }];
-        setList(newList);
-        //eliminate the value of input
-        setInputValue('');*/
+        //eliminate the previous value
+        setInputValue('');
     }
 
     function handleItemClick(index) {
