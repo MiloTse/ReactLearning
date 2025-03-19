@@ -7,11 +7,17 @@ import {useState, useReducer} from "react";
 //2.定义Reducer 函数
 //3.定义Action发送改变数据的指令
 //4.拿到Action之后，dispatch方法派发Action
-//5.根据指令修改数据
-//6. 完成数据的修改
+//5.Reducer 中 根据指令修改数据
+//6. 完成数据的修改， return 新数据
 
 function listReducer(state, action) {
-
+    switch (action.type) {
+    case 'add':
+            return [...state, {
+                id: action.value,
+                value: action.value,
+            }];
+    }
      return state;
 
 }
