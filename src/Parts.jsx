@@ -1,18 +1,28 @@
+import {useState} from "react";
+
 export function PartOne(){
+    const [show, setShow] = useState(true);
+
     return (
         <div>
-            PartOne
+            {show? <div>PartOne</div>: null}
+            <button onClick={() => setShow(!show)}>Toggle</button>
         </div>
 )}
 
 
 
 export  function PartTwo(){
-    return(
+
+    const [show, setShow] = useState(true);
+
+    return (
         <div>
-            PartTwo
+            {show ? <div>PartTwo</div> : null}
+            <button onClick={() => setShow(!show)}>Toggle</button>
         </div>
-)}
+    )
+}
 
 
 
