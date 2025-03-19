@@ -1,15 +1,16 @@
 
 import { PartOne, PartTwo} from './Parts';
+import {useState} from "react";
 function App() {
+    const [show, setShow] = useState(true);
     return (
-
         <div>
-            <PartOne />
-            <PartTwo />
+            <PartOne showPartOne={show} setShowPartOne={setShow}/>
+            <PartTwo showPartOne={!show} setShowPartOne={setShow}/>
 
         </div>
 
     )
 }
 
- export default App;
+export default App;

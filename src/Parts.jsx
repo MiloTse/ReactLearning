@@ -1,25 +1,21 @@
-import {useState} from "react";
 
-export function PartOne(){
-    const [show, setShow] = useState(false);
+
+export function PartOne({showPartOne, setShowPartOne}){
 
     return (
         <div>
-            {show? <div>PartOne</div>: null}
-            <button onClick={() => setShow(true)}>Show</button>
+            { showPartOne? <div>PartOne</div>: null}
+            <button onClick={() => setShowPartOne(true)}>Show</button>
         </div>
 )}
 
 
 
-export  function PartTwo(){
-
-    const [show, setShow] = useState(false);
-
+export  function PartTwo({showPartOne, setShowPartOne}){
     return (
         <div>
-            {show ? <div>PartTwo</div> : null}
-            <button onClick={() => setShow(true)}>Show</button>
+            { !showPartOne ? <div>PartTwo</div> : null}
+            <button onClick={() => setShowPartOne(false)}>Show</button>
         </div>
     )
 }
