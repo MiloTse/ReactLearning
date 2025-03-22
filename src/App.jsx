@@ -11,6 +11,23 @@ import { useReducer} from "react";
 //6. 完成数据的修改， return 新数据
 
 function dataReducer(state, action) {
+    const newState = {...state};
+    switch (action.type) {
+        case 'changeInput':
+            newState.inputValue=action.value;
+            return newState;
+        case 'addItem':
+            newState.list = [...newState.list,{
+                id: state.inputValue,
+                value: state.inputValue,//value 从原始的state 中获取
+            }]
+            return newState;
+        default:
+            return state;
+    }
+
+
+
 /*    if(action.type === 'add') {
         const newState = [...state, {
             id: action.value,
@@ -25,6 +42,8 @@ function dataReducer(state, action) {
         newState.splice(action.value, 1);
         return newState;
     }*/
+
+
     return state;
 }
 
@@ -36,12 +55,13 @@ function App() {
         list: []
     });
     function handleInputChange(event) {
-        // setInputValue(event.target.value);
-    }
+        const action = {type: 'changeInput', value: event.target.value,};
+        dispatch(action);
+     }
 
     function handleButtonClick() {
-        // const action = {type: 'add', value: inputValue,};
-        // dispatch(action);
+        const action = {type: 'addItem'};
+        dispatch(action);
         // //eliminate the previous value
         // setInputValue('');
     }
