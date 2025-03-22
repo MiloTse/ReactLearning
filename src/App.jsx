@@ -1,59 +1,11 @@
 import { useReducer} from "react";
+import dataReducer from "./reducer";
 
-
-
-//reducer 使用流程
-//1.定义数据
-//2.定义Reducer 函数
-//3.定义Action发送改变数据的指令
-//4.拿到Action之后，dispatch方法派发Action
-//5.Reducer 中 根据指令修改数据
-//6. 完成数据的修改， return 新数据
-
-function dataReducer(state, action) {
-    const newState = {...state};
-    switch (action.type) {
-        case 'changeInput':
-            newState.inputValue=action.value;
-            return newState;
-        case 'addItem':
-            newState.list = [...newState.list,{
-                id: state.inputValue,
-                value: state.inputValue,//value 从原始的state 中获取
-            }]
-            newState.inputValue = '';
-            return newState;
-        case 'deleteItem':
-            //copy the list
-            newState.list = [...newState.list];
-            newState.list.splice(action.value, 1);
-            return newState;
-        default:
-            return state;
-    }
-
-
-
-/*    if(action.type === 'add') {
-        const newState = [...state, {
-            id: action.value,
-            value: action.value,
-        }];
-        return newState;
-    }
-
-    if(action.type === 'delete') {
-        const newState = [...state];
-        //delete count:1 from the passing action.value
-        newState.splice(action.value, 1);
-        return newState;
-    }*/
-
-
-    return state;
-}
-
-
+//使用Reducer带来的变化
+//1.业务逻辑代码量显著降低
+//2.代码的可读性比较高
+//3.前端自动化测试方便Jest
+//4，组件的复用性会有一定的降低
 function App() {
      // const [list, setList] = useState([]);
     const [data, dispatch] = useReducer(dataReducer,  {
