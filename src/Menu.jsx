@@ -7,7 +7,9 @@ function Menu() {
             height: '300px',
             paddingRight: '20px',
 
-        }}>Menu</div>
+        }}>
+            Menu
+        </div>
     )
 }
 
