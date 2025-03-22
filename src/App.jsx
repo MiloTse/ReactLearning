@@ -23,6 +23,11 @@ function dataReducer(state, action) {
             }]
             newState.inputValue = '';
             return newState;
+        case 'deleteItem':
+            //copy the list
+            newState.list = [...newState.list];
+            newState.list.splice(action.value, 1);
+            return newState;
         default:
             return state;
     }
@@ -63,13 +68,11 @@ function App() {
     function handleButtonClick() {
         const action = {type: 'addItem'};
         dispatch(action);
-        // //eliminate the previous value
-        // setInputValue('');
     }
 
     function handleItemClick(index) {
-        // const action = {type: 'delete', value: index,}
-        // dispatch(action);
+        const action = {type: 'deleteItem', value: index,}
+        dispatch(action);
     }
 
     return (
