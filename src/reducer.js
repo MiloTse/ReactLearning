@@ -1,4 +1,3 @@
-
 function dataReducer(draft, action) {
     switch (action.type) {
         case 'changeInput':
@@ -18,8 +17,5 @@ function dataReducer(draft, action) {
         default:
             return draft;
     }
-
 }
-
-
 export default dataReducer
