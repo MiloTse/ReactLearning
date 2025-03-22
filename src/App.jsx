@@ -67,9 +67,9 @@ function App() {
              </div>
              <ul>
                  {
-                     list.map((item)=>
+                     list.map((item,index)=>
                         <li key={item.id}
-                            onClick={()=>handleItemClick()}
+                            onClick={()=>handleItemClick(index)}
                         >
                             {item.value}
                         </li>
