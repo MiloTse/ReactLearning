@@ -32,18 +32,13 @@ function listReducer(state, action) {
 function App() {
     const [inputValue, setInputValue] = useState('');
     // const [list, setList] = useState([]);
-    const [list, dispatch] = useReducer(listReducer, [{
-        id: 1,
-        value: 22,
-    }]);
+    const [list, dispatch] = useReducer(listReducer, [ ]);
     function handleInputChange(event) {
         setInputValue(event.target.value);
     }
 
     function handleButtonClick() {
-        const action = {
-            type: 'add',
-            value: inputValue,
+        const action = {type: 'add', value: inputValue,
         };
         dispatch(action);
         //eliminate the previous value
@@ -65,20 +60,13 @@ function App() {
                  <input value={inputValue} onChange={handleInputChange}/>
                  <button onClick={handleButtonClick}>submit</button>
              </div>
-             <ul>
-                 {
-                     list.map((item,index)=>
+             <ul>{list.map((item,index)=>
                         <li key={item.id}
-                            onClick={()=>handleItemClick(index)}
-                        >
+                            onClick={()=>handleItemClick(index)}>
                             {item.value}
                         </li>
-                     )
-                 }
-
+                     )}
              </ul>
-
-
          </div>
     )
 }
