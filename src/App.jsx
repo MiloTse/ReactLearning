@@ -21,6 +21,7 @@ function dataReducer(state, action) {
                 id: state.inputValue,
                 value: state.inputValue,//value 从原始的state 中获取
             }]
+            newState.inputValue = '';
             return newState;
         default:
             return state;
