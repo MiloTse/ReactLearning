@@ -1,7 +1,12 @@
+import Menu from "./Menu";
 
 function Body() {
     return (
-        <div>Body</div>
+        <div>
+            <Menu/>
+
+        </div>
+
     )
 }
 
