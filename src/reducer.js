@@ -1,26 +1,24 @@
 
-function dataReducer(state, action) {
-    const newState = {...state};
+function dataReducer(draft, action) {
     switch (action.type) {
         case 'changeInput':
-            newState.inputValue=action.value;
-            return newState;
+            draft.inputValue=action.value;
+            return draft;
         case 'addItem':
-            newState.list = [...newState.list,{
-                id: state.inputValue,
-                value: state.inputValue,//value 从原始的state 中获取
-            }]
-            newState.inputValue = '';
-            return newState;
+            draft.list.push({
+                id: draft.inputValue,
+                value: draft.inputValue,
+            })
+            draft.inputValue = '';
+            return draft;
         case 'deleteItem':
             //copy the list
-            newState.list = [...newState.list];
-            newState.list.splice(action.value, 1);
-            return newState;
+             draft.list.splice(action.value, 1);
+            return draft;
         default:
-            return state;
+            return draft;
     }
-    return state;
+
 }
 
 

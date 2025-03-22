@@ -1,4 +1,4 @@
-import { useReducer} from "react";
+import { useImmerReducer} from "use-immer";
 import dataReducer from "./reducer";
 
 //使用Reducer带来的变化
@@ -8,7 +8,7 @@ import dataReducer from "./reducer";
 //4，组件的复用性会有一定的降低
 function App() {
      // const [list, setList] = useState([]);
-    const [data, dispatch] = useReducer(dataReducer,  {
+    const [data, dispatch] = useImmerReducer(dataReducer,  {
         inputValue: '',
         list: []
     });
