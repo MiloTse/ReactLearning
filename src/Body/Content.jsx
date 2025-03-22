@@ -1,14 +1,11 @@
 
-function Content() {
+function Content({nameContent}) {
     return (
         <div style={{
             marginLeft: '200px',
-
         }}>
-            Content
-
+            Content: {nameContent}
         </div>
-
     )
 }
 

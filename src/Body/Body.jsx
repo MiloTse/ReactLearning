@@ -1,11 +1,11 @@
 import Menu from "./Menu";
 import Content from "./Content";
 
-function Body() {
+function Body({nameBody}) {
     return (
         <div>
             <Menu/>
-            <Content/>
+            <Content nameContent={nameBody}/>
 
         </div>
 

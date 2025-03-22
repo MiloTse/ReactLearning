@@ -4,10 +4,11 @@ import Body from "./Body/Body";
 
 
 function App() {
+    const username = "Warren";
     return (
          <div>
                 <Header/>
-                <Body/>
+                <Body nameBody={username}/>
 
          </div>
     )
