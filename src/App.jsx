@@ -1,4 +1,4 @@
-import {useState, useReducer} from "react";
+import { useReducer} from "react";
 
 
 
@@ -10,8 +10,8 @@ import {useState, useReducer} from "react";
 //5.Reducer 中 根据指令修改数据
 //6. 完成数据的修改， return 新数据
 
-function listReducer(state, action) {
-    if(action.type === 'add') {
+function dataReducer(state, action) {
+/*    if(action.type === 'add') {
         const newState = [...state, {
             id: action.value,
             value: action.value,
@@ -24,43 +24,40 @@ function listReducer(state, action) {
         //delete count:1 from the passing action.value
         newState.splice(action.value, 1);
         return newState;
-    }
+    }*/
     return state;
 }
 
 
 function App() {
-    const [inputValue, setInputValue] = useState('');
-    // const [list, setList] = useState([]);
-    const [list, dispatch] = useReducer(listReducer, [ ]);
+     // const [list, setList] = useState([]);
+    const [data, dispatch] = useReducer(dataReducer,  {
+        inputValue: '',
+        list: []
+    });
     function handleInputChange(event) {
-        setInputValue(event.target.value);
+        // setInputValue(event.target.value);
     }
 
     function handleButtonClick() {
-        const action = {type: 'add', value: inputValue,
-        };
-        dispatch(action);
-        //eliminate the previous value
-        setInputValue('');
+        // const action = {type: 'add', value: inputValue,};
+        // dispatch(action);
+        // //eliminate the previous value
+        // setInputValue('');
     }
 
     function handleItemClick(index) {
-        const action = {
-            type: 'delete',
-            value: index,
-        }
-        dispatch(action);
-
+        // const action = {type: 'delete', value: index,}
+        // dispatch(action);
     }
 
     return (
          <div>
              <div>
-                 <input value={inputValue} onChange={handleInputChange}/>
+                 <input value={data.inputValue} onChange={handleInputChange}/>
                  <button onClick={handleButtonClick}>submit</button>
              </div>
-             <ul>{list.map((item,index)=>
+             <ul>{data.list.map((item,index)=>
                         <li key={item.id}
                             onClick={()=>handleItemClick(index)}>
                             {item.value}
