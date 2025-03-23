@@ -1,6 +1,7 @@
 import AddItem from './AddItem';
 import ItemList from "./ItemList";
 import {useReducer} from "react";
+import DataContext from "./DataContext";
 
 
 function dataReducer(state, action) {
@@ -15,8 +16,11 @@ function App() {
 
        return (
            <>
-                <AddItem />
-                <ItemList />
+               <DataContext.Provider value={{data}}>
+                   <AddItem />
+                   <ItemList />
+               </DataContext.Provider>
+
            </>
 
 
