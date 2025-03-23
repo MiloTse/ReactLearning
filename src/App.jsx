@@ -14,7 +14,9 @@ function App() {
          <div>
                 <nameContext.Provider value={user}>
                     <Header onChange={handleHeaderChange} />
-                    <Body />
+                    <nameContext.Provider value='hello word'>
+                        <Body />
+                    </nameContext.Provider>
                 </nameContext.Provider>
 
          </div>
