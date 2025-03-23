@@ -1,7 +1,12 @@
 function ItemList() {
     return (
         <div>
-            <h1>Item List</h1>
+            <ul>
+                <li>Item 1</li>
+                <li>Item 2</li>
+
+
+            </ul>
         </div>
     )
 }

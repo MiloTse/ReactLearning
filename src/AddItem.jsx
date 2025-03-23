@@ -1,7 +1,8 @@
 function AddItem() {
     return (
         <div>
-            <h1>AddItem</h1>
+            <input />
+            <button>Submit</button>
         </div>
     )
 

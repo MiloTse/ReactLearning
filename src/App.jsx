@@ -1,9 +1,15 @@
 import AddItem from './AddItem';
+import ItemList from "./ItemList";
 
 
 function App() {
        return (
-           <div>Hello World</div>
+           <>
+                <AddItem />
+                <ItemList />
+           </>
+
+
     )
 }
 export default App;
