@@ -3,8 +3,8 @@ import ItemList from "./ItemList";
 import {useReducer} from "react";
 
 
-function dataReducer() {
-
+function dataReducer(state, action) {
+    return state;
 }
 
 function App() {
