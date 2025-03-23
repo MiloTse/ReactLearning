@@ -5,21 +5,10 @@ import {useState} from "react";
 
 
 function App() {
-    const [user, setUser] = useState('Calculating');
-
-    function handleHeaderChange(){
-        setUser('John');
-    }
        return (
-         <div>
-                <nameContext.Provider value={user}>
-                    <Header onChange={handleHeaderChange} />
-                    <nameContext.Provider value='hello word'>
-                        <Body />
-                    </nameContext.Provider>
-                </nameContext.Provider>
-
-         </div>
+         <Header>
+             <div>Extro Info</div>
+         </Header>
     )
 }
 export default App;

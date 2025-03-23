@@ -1,12 +1,10 @@
 
-function Header({onChange}) {
+function Header({children}) {
     return (
-        <div style={{borderBottom: '1px solid black'}}
-        onClick={onChange}
-        >Header
-
-        >Header</div>
+        <div>
+            <div>Header</div>
+            <div>{children}</div>
+        </div>
     )
 }
-
 export default Header
