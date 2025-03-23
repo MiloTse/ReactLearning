@@ -1,14 +1,15 @@
 import Header from "./Header/Header";
 import Body from "./Body/Body";
-
+import nameContext from "./nameContext";
 
 
 function App() {
-    const username = "Warren";
-    return (
+      return (
          <div>
-                <Header/>
-                <Body nameBody={username}/>
+                <nameContext.Provider value="warren">
+                    <Header/>
+                    <Body />
+                </nameContext.Provider>
 
          </div>
     )

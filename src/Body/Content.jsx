@@ -1,10 +1,13 @@
+import {useContext} from 'react';
+import nameContext from "../nameContext";
 
-function Content({nameContent}) {
+function Content() {
+    const name = useContext(nameContext);
     return (
         <div style={{
             marginLeft: '200px',
         }}>
-            Content: {nameContent}
+            Content: {name}
         </div>
     )
 }
