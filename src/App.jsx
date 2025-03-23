@@ -1,3 +1,5 @@
+import AddItem from './AddItem';
+
 
 function App() {
        return (
