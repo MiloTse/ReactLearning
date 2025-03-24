@@ -1,8 +1,8 @@
 import {useState} from "react";
 
+let timer = null;
 function App() {
     const [time, setTime] = useState((new Date()).getTime());
-    let timer = null;
     function handleStartClick () {
         timer = setInterval(() => {
             setTime((new Date()).getTime())
