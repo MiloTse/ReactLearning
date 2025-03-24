@@ -3,18 +3,19 @@ import ItemList from "./ItemList";
 import {useReducer} from "react";
 import DataContext from "./DataContext";
 import DispatchContext from "./DispatchContext";
+import {useImmerReducer} from "use-immer";
 
-function dataReducer(state, action) {
+
+function dataReducer(draft, action) {
     if (action.type === 'addItem') {
-        const newState = {...state};
-        newState.inputValue = action.value;
-        return newState;
+        draft.inputValue = action.value;
+        return draft;
     }
-    return state;
+    return draft;
 }
 
 function App() {
-    const [data, dispatch] = useReducer(dataReducer, {
+    const [data, dispatch] = useImmerReducer(dataReducer, {
         inputValue: '',
         list: [],
     });
