@@ -10,6 +10,8 @@ function Timer() {
         const timer = setInterval(() => {
             setTime((new Date()).getTime());
         },1000);
+        //组件销毁后，清理定时器
+        //Clean up the timer after the component is destroyed
         return () => {
             clearInterval(timer);
         }
