@@ -1,9 +1,18 @@
+import {useContext} from "react";
+import DataContext from "./DataContext";
+
 function ItemList() {
+    //fetch data from context, and then iterate the list
+    const data = useContext(DataContext);
+
     return (
         <div>
             <ul>
-                <li>Item 1</li>
-                <li>Item 2</li>
+                {
+                    data.list.map((item,index)=>
+                    <li key={index}>{item.value}</li>
+                )
+                }
 
 
             </ul>
