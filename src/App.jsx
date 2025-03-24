@@ -1,16 +1,20 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 
-let timer = null;
+// let timer = null;
 function App() {
     const [time, setTime] = useState((new Date()).getTime());
+
+    const timer = useRef(null);
+    // let timer = null;
+
     function handleStartClick () {
-        timer = setInterval(() => {
+        timer.current = setInterval(() => {
             setTime((new Date()).getTime())
         }, 1000       )
     }
 
     function handleStopClick() {
-        clearInterval(timer)
+        clearInterval(timer.current)
     }
        return (
             <div>
