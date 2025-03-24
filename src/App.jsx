@@ -2,6 +2,10 @@ import {useRef, useState} from "react";
 
 // let timer = null;
 function App() {
+    //1.timer: {current: null}
+    //2.timer: {current: timer reference
+    //3.timer: {current: null"
+    //Ref 用来保存React 组件中不需要驱动页面变更的数据
     const [time, setTime] = useState((new Date()).getTime());
 
     const timer = useRef(null);
