@@ -10,6 +10,9 @@ function Timer() {
         const timer = setInterval(() => {
             setTime((new Date()).getTime());
         },1000);
+        return () => {
+            clearInterval(timer);
+        }
 
     },[]);
 
