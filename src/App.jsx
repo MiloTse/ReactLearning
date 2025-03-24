@@ -16,7 +16,7 @@ function App() {
 
        return (
            <>
-               <DataContext.Provider value={{data}}>
+               <DataContext.Provider value={data}>
                    <AddItem />
                    <ItemList />
                </DataContext.Provider>
