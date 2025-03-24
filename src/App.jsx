@@ -1,30 +1,9 @@
-import {useRef, useState} from "react";
 
-// let timer = null;
 function App() {
-    //1.timer: {current: null}
-    //2.timer: {current: timer reference
-    //3.timer: {current: null"
-    //Ref 用来保存React 组件中不需要驱动页面变更的数据
-    const [time, setTime] = useState((new Date()).getTime());
 
-    const timer = useRef(null);
-    // let timer = null;
-
-    function handleStartClick () {
-        timer.current = setInterval(() => {
-            setTime((new Date()).getTime())
-        }, 1000       )
-    }
-
-    function handleStopClick() {
-        clearInterval(timer.current)
-    }
        return (
             <div>
-                <button onClick={handleStartClick}>Start</button>
-                <button onClick={handleStopClick}>Stop</button>
-                <div>{time}</div>
+                Hello World
             </div>
         )
 }
