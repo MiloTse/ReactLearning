@@ -1,17 +1,18 @@
 import { useRef} from "react";
+import InputComponent from "./InputComponent.jsx";
 
 
 function App() {
-
     const inputElement = useRef(null);
+
+
     function handleBtnClick() {
-        console.log('focus');
-        inputElement.current.focus();
+         inputElement.current.focus();
     }
 
     return (
             <div>
-               <input ref={inputElement}/>
+               <InputComponent ref={inputElement}/>
                 <button onClick={handleBtnClick}>
                     Focus
                 </button>
