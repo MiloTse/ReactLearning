@@ -1,19 +1,9 @@
-//1.除Effect引l入的临时内容，避免内存泄露
-import Timer from "./Timer";
-import {useState} from "react";
-
+import VideoPlayerOne from "./VideoPlayerOne";
+//2.Effect是在render执行结束，，页面更新之后，再执行的
 function App() {
-    const [showTimer, setShowTimer] = useState(false);
-
-    function handleBtnClick() {
-        const showState = !showTimer;
-        setShowTimer(showState);
-    }
-
     return (
             <div>
-                {showTimer? <Timer/> : null}
-                <button onClick={handleBtnClick}>Toggle</button>
+                <VideoPlayerOne />
             </div>
         )
 }
