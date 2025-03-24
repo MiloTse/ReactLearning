@@ -1,7 +1,10 @@
+import {useState} from "react";
+
 function Timer() {
+    const [time,setTime] =useState((new Date()).getTime());
     return (
         <div>
-            Timer
+            {time}
         </div>
     )
 }

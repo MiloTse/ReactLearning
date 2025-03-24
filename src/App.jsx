@@ -12,7 +12,7 @@ function App() {
 
     return (
             <div>
-                <Timer/>
+                {showTimer? <Timer/> : null}
                 <button onClick={handleBtnClick}>Toggle</button>
             </div>
         )
