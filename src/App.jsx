@@ -19,6 +19,10 @@ function dataReducer(draft, action) {
         draft.inputValue = '';
         return draft;
     }
+    if (action.type === 'deleteItem') {
+        draft.list.pop();
+        return draft;
+    }
     return draft;
 }
 
