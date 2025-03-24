@@ -7,8 +7,16 @@ import {useImmerReducer} from "use-immer";
 
 
 function dataReducer(draft, action) {
-    if (action.type === 'addItem') {
+    if (action.type === 'changeInput') {
         draft.inputValue = action.value;
+        return draft;
+    }
+    if (action.type === 'addItem') {
+        draft.list.push({
+            key:draft.inputValue,
+            value: draft.inputValue
+        });
+        draft.inputValue = '';
         return draft;
     }
     return draft;
