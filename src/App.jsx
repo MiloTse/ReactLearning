@@ -4,8 +4,9 @@ import VideoPlayerTwo from "./VideoPlayerTwo";
 import video from "./a.mp4";
 
 
-//2.Effect是在render执行结束，，页面更新之后，再执行的
-//2. The Effect is executed after the render has completed and the page has been updated.
+//2.Effect并不是跟随render 属性执行的，而是在render执行结束，页面更新之后，再执行的
+//2. The Effect does not execute alongside the render properties;
+//instead, it runs after the render has completed and the page has been updated.
 
 function App() {
     //play status
