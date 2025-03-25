@@ -14,6 +14,6 @@ function VideoPlayerTwo({src, isPlaying}) {
         }
     })
 
-    return (<video ref={ref} src={src} loop/>)
+    return (<video ref={ref} src={src} loop muted={true}/>)
 }
 export default VideoPlayerTwo;
