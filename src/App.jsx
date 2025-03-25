@@ -37,8 +37,13 @@ function App() {
     //demo3: DOM 操作在严格模式下，需要进行清理
     //demo3: DOM operations need to be cleaned up in strict mode.
     useEffect(()=>{
-        console.log("set backgroud style to red");
-        window.document.body.style.backgroundColor = "red";
+        console.log("set background style to red");
+        const originalBackground = window.document.body.style.background;
+        window.document.body.style.background = "red";
+        return () => {
+            console.log("set background style to original");
+            window.document.body.style.background = originalBackground;
+        }
     },[]);
     return (
             <div style={{height:'5000px'}}> {time} </div>
