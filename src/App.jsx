@@ -5,6 +5,7 @@ function App() {
     const list=['Do homework','CleanRooms','Coding','wateringFlower'];
     const [name,setName]= useState('');
     const [search,setSearch]= useState('');
+    const filteredList= list.filter(item=> item.indexOf(search) !== -1);
 
     function handleNameChange(e) {
         setName(e.target.value);
@@ -13,6 +14,8 @@ function App() {
     function handleSearchChange(e) {
         setSearch(e.target.value);
     }
+
+
 
     return (
             <div >
@@ -25,7 +28,7 @@ function App() {
                 <div>
                     <select>
                         {
-                            list.map((item,index)=>{
+                            filteredList.map((item,index)=>{
                                 return <option key={index} value={index}>{item}</option>
                             })
                         }
