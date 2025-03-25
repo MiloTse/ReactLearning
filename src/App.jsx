@@ -18,10 +18,18 @@ function App() {
     }, [])
 
 */
+    //全局事件绑定的严格开发模式下，需要进行清理
+    //Global event binding requires cleanup in strict development mode.
+    useEffect(()=>{
+        function onScroll() {
+            console.log("scroll");
+        }
 
+        window.addEventListener("scroll",  onScroll);
 
+    },[]);
 
     return (
-            <div> {time} </div>
+            <div style={{height:'5000px'}}> {time} </div>
         )}
 export default App;
