@@ -11,6 +11,14 @@ function useContent(){
     return [content, handleContentChange];
 }
 
+function useName(){
+    useDebugValue('hello world');
+    const [name, setName] = useState('');
+    const handleNameChange = useCallback((e) => {
+        setName(e.target.value)
+    }, []);
+    return [name, handleNameChange];
+}
 
 //useCallback 避免render 过程反复生成函数
 function App() {
@@ -19,10 +27,15 @@ function App() {
     //第一个是参数是要执行的内容，第二个是要依赖的内容
     //useCallback返回一个函数，这个函数的执行结果和依赖的内容有关
     //如果依赖的内容没有改变，那么返回的函数就不会改变
+    const [name, handleNameChange] = useName();
 
       return (
-        <input value={content ? content: ''} onChange={handleContentChange}/>
-     )
+          <>
+              <input value={name ? name : ''} onChange={handleNameChange}/>
+              <input value={content ? content : ''} onChange={handleContentChange}/>
+          </>
+
+      )
 }
 
 export default App;
