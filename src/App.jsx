@@ -6,10 +6,13 @@ function App() {
 
     //render函数渲染完成后，useEffect会开始判断是否执行
     useEffect(() => {
-        setInterval(()=>{
+        const timer = setInterval(()=>{
             console.log("useEffect")
             setTime((new Date()).getTime())
-        },1000)
+        },1000);
+        return () => {
+            clearInterval(timer);
+        }
     }, [])
 
 
