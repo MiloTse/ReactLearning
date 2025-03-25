@@ -1,5 +1,6 @@
 
 function App() {
+    const list=['Do homework','CleanRooms','Coding','wateringFlower'];
     return (
             <div >
                 <div>
@@ -10,9 +11,11 @@ function App() {
                 </div>
                 <div>
                     <select>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        {
+                            list.map((item,index)=>{
+                                return <option key={index} value={index}>{item}</option>
+                            })
+                        }
                     </select>
                 </div>
 
