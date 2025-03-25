@@ -6,9 +6,8 @@ import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-function renderCallback(id, phase, actualDuration, baseDuration, startTime, commitTime) {
-    console.log(id, phase, actualDuration, baseDuration, startTime, commitTime)
-
+function renderCallback(id, phase, actualDuration, baseDuration, startTime, endTime) {
+    console.log(id, phase, actualDuration, baseDuration, startTime, endTime)
 }
 //Profiler是用于性能分析的工具，它可以在React应用程序中捕获组件的渲染时间和内存使用情况。
 //Profiler可以帮助我们找到性能瓶颈，优化我们的应用程序。
