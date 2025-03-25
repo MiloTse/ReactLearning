@@ -6,7 +6,7 @@ function App() {
     const [name,setName]= useState('');
     const [search,setSearch]= useState('');
     const filteredList= list.filter(item=> item.indexOf(search) !== -1);
-
+    console.log("filteredList: ",filteredList);
     function handleNameChange(e) {
         setName(e.target.value);
     }
