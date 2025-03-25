@@ -13,6 +13,8 @@ import React, {Suspense} from "react";
 const Todos = React.lazy(() => import("./Todos"));
 function App() {
     return (
+        //Suspense是一个组件，它可以用来包裹懒加载的组件
+        //Suspense的fallback属性可以用来指定当组件加载的时候显示的内容
         <Suspense fallback={<div>Loading...</div>}>
             <Todos/>
         </Suspense>
