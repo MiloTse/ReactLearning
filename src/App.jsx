@@ -6,9 +6,13 @@ function App() {
     const [url, setUrl] = useState('http://localhost:3000');
     const [param, setParam] = useState('?name=warren');
 
-    useEffect(() => {
+    const request = (url)=>{
         console.log(`sending request..., address is ${url}${param}`);
-    }, [url, param]);
+    }
+
+    useEffect(() => {
+        request(url);
+    }, [url]);
 
      return (
          <>
