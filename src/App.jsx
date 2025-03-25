@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect,useEffectEvent } from 'react';
 
 
 //useEffectEvent
@@ -6,9 +6,9 @@ function App() {
     const [url, setUrl] = useState('http://localhost:3000');
     const [param, setParam] = useState('?name=warren');
 
-    const request = (url)=>{
+    const request = useEffectEvent((url)=>{
         console.log(`sending request..., address is ${url}${param}`);
-    }
+    })
 
     useEffect(() => {
         request(url);
