@@ -1,5 +1,5 @@
 import React from "react";
-
+import Todos from "./Todos";
 //组件的懒加载
 //也就是说Todos的代码不会跟App的代码一起打包， Todos 会打包一份，App 会打包一份
 //而是当我们访问到Todos组件的时候，才会去加载Todos的代码
@@ -8,7 +8,7 @@ import React from "react";
 //不能用于类组件
 //因为类组件的代码会跟App的代码一起打包
 //所以类组件的代码不会被懒加载
-const Todos = React.lazy(() => import("./Todos"));
+// const Todos = React.lazy(() => import("./Todos"));
 function App() {
     return (
         <div><Todos/></div>
