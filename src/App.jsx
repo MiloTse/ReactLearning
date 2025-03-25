@@ -1,40 +1,47 @@
-import {useState,   useCallback, useDebugValue} from 'react';
+import {forwardRef, useEffect, useImperativeHandle, useRef, useState} from "react";
 
-//defined a custom hook
-function useContent(){
-    const [content, setContent] = useState('');
-    //useDebugValue 只能在自定义hook中使用
-    useDebugValue('warren xxx');
-    const handleContentChange = useCallback((e) => {
-        setContent(e.target.value)
-    }, []);
-    return [content, handleContentChange];
-}
 
-function useName(){
-    useDebugValue('hello world');
-    const [name, setName] = useState('');
-    const handleNameChange = useCallback((e) => {
-        setName(e.target.value)
-    }, []);
-    return [name, handleNameChange];
-}
 
-//useCallback 避免render 过程反复生成函数
+//子组件使用forwardRef使其与父组件有一定关联
+const UserInput = forwardRef((props, ref) => {
+    const inputRef = useRef(null);
+
+    //父组件调用子组件的DOM时，能够对DOM节点上的返回内容中转做一层限制, 父组件不能访问子组件dom的其他内容，
+    //只能访问useImperativeHandle里面return的内容，比如blur.
+    //子组件UserInput 没有提供的，父组件一个也取不到比如focus属性，未提供但是父组件调用会报错
+    useImperativeHandle(ref, ()=>{
+        return {
+            //可返回方法
+            blur(){
+                inputRef.current.blur();
+            },
+            //也可返回属性
+            value: inputRef.current.value,
+            //...
+
+        }
+    },[]);
+
+    const [value, setValue] = useState('default');
+    return <input ref={inputRef} value={value || ''} onChange={(e) => {
+        setValue(e.target.value)
+    }}/>
+
+});
+
+
 function App() {
-    //use customized hook
-    const [content, handleContentChange] = useContent();
-    //第一个是参数是要执行的内容，第二个是要依赖的内容
-    //useCallback返回一个函数，这个函数的执行结果和依赖的内容有关
-    //如果依赖的内容没有改变，那么返回的函数就不会改变
-    const [name, handleNameChange] = useName();
+    const ref = useRef(null)
+    useEffect(()=>{
+            //可以取到子组件返回的方法
+            console.log(ref.current.blur());
+            //可以取到子组件返回的属性
+            console.log(ref.current.value);
+            //...
 
-      return (
-          <>
-              <input value={name ? name : ''} onChange={handleNameChange}/>
-              <input value={content ? content : ''} onChange={handleContentChange}/>
-          </>
-
+            },[]    )
+    return (
+        <UserInput ref={ref}/>
       )
 }
 
