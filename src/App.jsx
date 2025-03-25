@@ -1,29 +1,26 @@
 import {useEffect, useState} from "react";
 
 function App() {
-    const [isOnline, setIsOnline] = useState(window.navigator.onLine);
+    const [isOnline, setIsOnline] = useState(true);
 
-    function handleOnline(e) {
-        console.log(e,"Online");
+
+
+    function updateState(){
+        setIsOnline(window.navigator.onLine);
     }
-
-    function handleOffline(e) {
-        console.log(e,"Offline");
-    }
-
     useEffect(() => {
-        window.addEventListener("online", handleOnline);
-        window.addEventListener("offline", handleOffline);
+        window.addEventListener("online", updateState);
+        window.addEventListener("offline", updateState);
 
-        return () => {
+ /*       return () => {
             window.removeEventListener("online", handleOnline);
             window.removeEventListener("offline", handleOffline);
-        }
+        }*/
     });
 
      return (
             <div>
-                Hello World
+                {isOnline.toString()}
             </div>
     )
 }
