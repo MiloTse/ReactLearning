@@ -27,7 +27,6 @@ function App() {
     },[])
     console.log('step2');
 
-
     function handleNameChange(e) {
         setName(e.target.value);
     }
