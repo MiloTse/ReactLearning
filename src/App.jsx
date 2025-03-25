@@ -5,7 +5,7 @@ import {useEffect, useState} from "react";
 function App() {
     const [ time, setTime ] = useState((new Date()).getTime());
 
-    //timer need to be clear on strict development mode
+    //demo1: timer need to be clear on strict development mode
 /*
     useEffect(() => {
         const timer = setInterval(()=>{
@@ -18,8 +18,9 @@ function App() {
     }, [])
 
 */
-    //全局事件绑定的严格开发模式下，需要进行清理
-    //Global event binding requires cleanup in strict development mode.
+    //demo2: 全局事件绑定的严格开发模式下，需要进行清理
+    //demo2: Global event binding requires cleanup in strict development mode.
+/*
     useEffect(()=>{
         function onScroll() {
             console.log("scroll");
@@ -31,8 +32,50 @@ function App() {
             window.removeEventListener("scroll", onScroll);
         }
     },[]);
+*/
 
+    //demo3: DOM 操作在严格模式下，需要进行清理
+    //demo3: DOM operations need to be cleaned up in strict mode.
+    useEffect(()=>{
+        console.log("set backgroud style to red");
+        window.document.body.style.backgroundColor = "red";
+    },[]);
     return (
             <div style={{height:'5000px'}}> {time} </div>
         )}
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
