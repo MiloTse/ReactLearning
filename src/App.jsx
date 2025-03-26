@@ -13,7 +13,8 @@ const Todos = memo (({text}) =>{
 function App() {
     const[inputValue,setInputValue]= useState('');
     const [deferredInputValue, setDeferredInputValue] = useState('');
-    // const [isPending, startTransition] = useTransition();
+    //创建一个延迟执行的过程，延迟执行是指等到浏览器空闲的时候再执行
+    const [isPending, startTransition] = useTransition();
     function handleOnChange(e) {
         setInputValue(e.target.value);
         //开启一个延迟执行,等到空闲时再执行deferredInputValue
@@ -28,7 +29,7 @@ function App() {
                 value={inputValue || ''}
                 onChange={handleOnChange}
             />
-            <Todos text={deferredInputValue}/>
+            {isPending ? <div>Loading...</div> : <Todos text={deferredInputValue}/> }
         </>
     );
 }
