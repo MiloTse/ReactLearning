@@ -1,4 +1,4 @@
-import {useDeferredValue, useState, memo} from "react";
+import {useDeferredValue, useState, memo, useTransition} from "react";
 
 const Todos = memo (({text}) =>{
     const items = [];
@@ -12,13 +12,21 @@ const Todos = memo (({text}) =>{
 
 function App() {
     const[inputValue,setInputValue]= useState('');
-    //defer inputValue
-    const deferredInputValue = useDeferredValue(inputValue);
+    const [deferredInputValue, setDeferredInputValue] = useState('');
+    const [isPending, startTransition] = useTransition();
+    function handleOnChange(e) {
+        setInputValue(e.target.value);
+        //开启一个延迟执行,等到空闲时再执行deferredInputValue
+        startTransition(() => {
+            setDeferredInputValue(e.target.value);
+        })
+    }
+
     return (
         <>
             <input
                 value={inputValue || ''}
-                onChange={(e)=>{setInputValue(e.target.value)}}
+                onChange={handleOnChange}
             />
             <Todos text={deferredInputValue}/>
         </>
