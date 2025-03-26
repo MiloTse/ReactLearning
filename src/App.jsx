@@ -2,18 +2,26 @@ import {memo, useState} from "react";
 
 
 //组件所依赖的props没有发生变化，那么这个组件就不进行重新渲染，使用缓存
+//memo 包裹的组件，要不要重新渲，染取决于第二个参数/函数的返回值
 const Child = memo(
-
     ({name, address}) => {
     console.log('Child render');
     return  <div>{name} {address}</div>
 
     },
-    //第二个参数
-    (originalProps, props)=>{
-
+    //取决于这第二个参数/函数的返回值
+    (
+        originalProps,
+        props)=>{
+        //如果组件接收到的address发生了变化，那么就返回false, 不用缓存
+        if(originalProps.address !== props.address){
+            return false;
+        }else {//否则使用缓存
+            return true;
+        }
+        // console.log(originalProps, props);
+        // return true;
     }
-
 );
 
 function App() {
@@ -37,7 +45,6 @@ function App() {
         </>
     );
 }
-
 export default App;
 
 
