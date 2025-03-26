@@ -6,8 +6,12 @@ function Todos ({text}){
         items.push(<div key={i}>{text}</div>)
     }
 
+    const startime = (new Date()).getTime();
 
-    return <div>{items}</div>
+    while((new Date()).getTime() - startime < 60){
+        return <div>{items}</div>
+    }
+
 }
 
 function App() {
