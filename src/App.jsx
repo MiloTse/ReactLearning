@@ -1,4 +1,4 @@
-import React, {Suspense, useState} from "react";
+import React, {Suspense, useDeferredValue, useState} from "react";
 
 const Todos = React.lazy(() => {
     return new Promise((resolve) => {
@@ -17,9 +17,15 @@ const Hello = React.lazy(() => {
 
 });
 
+
+//1.isHello 变为 false
+//2.加载Todos组件
+//3.deferredIsHello 从true 变为 false
+//4.Component 根据deferredIsHello 从Hello 变成Todos 这个组件
  function App() {
      const [isHello, setIsHello] = useState(true);
-    const Component = isHello ? Hello: Todos;
+     const deferredIsHello = useDeferredValue(isHello);
+    const Component = deferredIsHello ? Hello: Todos;
     return (
         <>
             <button onClick={() => setIsHello(false)}>Toggle</button>
