@@ -14,11 +14,7 @@ const Child = memo(
         originalProps,
         props)=>{
         //如果组件接收到的address发生了变化，那么就返回false, 不用缓存
-        if(originalProps.address !== props.address){
-            return false;
-        }else {//否则使用缓存
-            return true;
-        }
+        return originalProps.address === props.address;
         // console.log(originalProps, props);
         // return true;
     }
