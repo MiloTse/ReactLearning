@@ -1,10 +1,12 @@
-import {useState} from "react";
+import {memo, useState} from "react";
 
-function Child({name}) {
+
+//组件所依赖的props没有发生变化，那么这个组件就不进行重新渲染，使用缓存
+const Child = memo(({name}) => {
     console.log('Child render');
     return  <div>{name}</div>
 
-}
+});
 
 function App() {
     const [name,setName ] = useState('');
