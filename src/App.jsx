@@ -1,8 +1,13 @@
 import React, {Suspense} from "react";
-import Todos from "./Todos";
 
+const Todos = React.lazy(() => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(import('./Todos'))
+        }, 1000);
+    })
 
-
+});
  function App() {
     return (
 
