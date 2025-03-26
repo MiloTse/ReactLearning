@@ -2,11 +2,19 @@ import {memo, useState} from "react";
 
 
 //组件所依赖的props没有发生变化，那么这个组件就不进行重新渲染，使用缓存
-const Child = memo(({name}) => {
-    console.log('Child render');
-    return  <div>{name}</div>
+const Child = memo(
 
-});
+    ({name, address}) => {
+    console.log('Child render');
+    return  <div>{name} {address}</div>
+
+    },
+    //第二个参数
+    (originalProps, props)=>{
+
+    }
+
+);
 
 function App() {
     const [name,setName ] = useState('');
@@ -24,7 +32,7 @@ function App() {
                 setAddress(e.target.value)
             }}/>
             </div>
-            <Child name={name}></Child>
+            <Child name={name} address={address}></Child>
 
         </>
     );
