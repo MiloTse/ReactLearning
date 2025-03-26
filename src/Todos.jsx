@@ -1,11 +1,14 @@
 
+const promise = new Promise(()=>{}, ()=>{});
 
+function getData(){
+    throw promise;
+}
 function Todos(){
+    const data = getData();
     return (
         <div>
-            <p>Todo One</p>
-            <p>Todo Two</p>
-            <p>Todo Three</p>
+            <p>{data}</p>
         </div>
     )
 }
