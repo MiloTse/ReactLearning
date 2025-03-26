@@ -1,40 +1,26 @@
-import React, {Suspense, useDeferredValue, useState} from "react";
+import {useState} from "react";
 
-const Todos = React.lazy(() => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(import('./Todos'))
-        }, 1000);
-    })
-
-});
-const Hello = React.lazy(() => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(import('./Hello'))
-        }, 1000);
-    })
-
-});
+function Todos ({text}){
+    const items = [];
+    for (let i = 0; i < 100; i++) {
+        items.push(<div key={i}>{text}</div>)
+    }
 
 
-//1.isHello 变为 false
-//2.加载Todos组件
-//3.deferredIsHello 从true 变为 false
-//4.Component 根据deferredIsHello 从Hello 变成Todos 这个组件
- function App() {
-     const [isHello, setIsHello] = useState(true);
-     const deferredIsHello = useDeferredValue(isHello);
-    const Component = deferredIsHello ? Hello: Todos;
+    return <div>{items}</div>
+}
+
+function App() {
+    const[inputValue,setInputValue]= useState('');
     return (
         <>
-            <button onClick={() => setIsHello(false)}>Toggle</button>
-
-            <Suspense fallback={<div>Loading...</div>}>
-                <Component/>
-            </Suspense>
+            <input
+                value={inputValue || ''}
+                onChange={(e)=>{setInputValue(e.target.value)}}
+            />
+            <Todos text={inputValue}/>
         </>
-      );
+    );
 }
 
 export default App;
