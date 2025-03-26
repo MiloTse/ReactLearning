@@ -7,11 +7,19 @@ function Child({name}) {
 }
 
 function App() {
-    const [name,setName ]= useState('');
+    const [name,setName ] = useState('');
+    const [ address,setAddress ]= useState('');
     return (
         <>
             <div>
-                name:<input value={name || ''} onChange={(e)=> {setName(e.target.value)}}/>
+                name:<input value={name || ''} onChange={(e) => {
+                setName(e.target.value)
+            }}/>
+            </div>
+            <div>
+                address:<input value={address ||''} onChange={(e) => {
+                setAddress(e.target.value)
+            }}/>
             </div>
             <Child name={name}></Child>
 
