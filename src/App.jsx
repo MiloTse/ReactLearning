@@ -8,6 +8,7 @@ function Child({name}) {
 
 function App() {
     const [name,setName ] = useState('');
+    //address 发生变化的时候，父组件的state也发生了变化，父组件一定发生render, 而父组件人的render，会触发Child的render.
     const [ address,setAddress ]= useState('');
     return (
         <>
