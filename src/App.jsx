@@ -6,7 +6,7 @@ function Child({age}) {
 function App() {
   return (
     <div>
-        <Child age={18} />
+        <Child age={null} />
     </div>
   );
 }
