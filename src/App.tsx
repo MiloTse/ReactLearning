@@ -12,7 +12,7 @@ function Child(props: ChildProps) {
 function App() {
   return (
     <div>
-        <Child age={null} />
+        <Child age={18} />
     </div>
   );
 }
