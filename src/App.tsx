@@ -3,13 +3,15 @@
 //2.能够检测出潜在的问题
 //实际参数不需要类型，形式参数需要类型
 import {JSX} from "react";
-type ChildProps = {
-    age: number;
-    dom: JSX.Element
-}
+// type ChildProps = {
+//     age: number;
+//     dom: JSX.Element
+// }
 //函数组件，Props类型如何定义
-function Child( { age ,dom}: ChildProps) {
-    // const { age } = props;
+function Child({ age, dom }: {
+    age: number;
+    dom: JSX.Element;
+}) {
     return (
     <>
         <div>{age.toString()}</div>
