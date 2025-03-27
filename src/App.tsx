@@ -5,16 +5,17 @@
 type ChildProps = {
     age: number
 }
-
+//函数组件，Props类型如何定义
 function Child( { age }: ChildProps) {
     // const { age } = props;
     return <div>{age.toString()}</div>
 }
 
 function App() {
+    const dom = <div>dom</div>
   return (
     <div>
-        <Child age={18} />
+        <Child age={18} dom={dom} />
     </div>
   );
 }
