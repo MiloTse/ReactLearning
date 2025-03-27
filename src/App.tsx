@@ -8,9 +8,15 @@ type ChildProps = {
     dom: JSX.Element
 }
 //函数组件，Props类型如何定义
-function Child( { age }: ChildProps) {
+function Child( { age ,dom}: ChildProps) {
     // const { age } = props;
-    return <div>{age.toString()}</div>
+    return (
+    <>
+        <div>{age.toString()}</div>
+        {dom}
+    </>
+    );
+
 }
 
 function App() {
