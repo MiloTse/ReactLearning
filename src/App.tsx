@@ -6,8 +6,8 @@ type ChildProps = {
     age: number
 }
 
-function Child(props: ChildProps) {
-    const { age } = props;
+function Child( { age }: ChildProps) {
+    // const { age } = props;
     return <div>{age.toString()}</div>
 }
 
