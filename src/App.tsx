@@ -3,11 +3,11 @@
 import {useState} from "react";
 
 function App() {
-  const [name, setName] = useState('Warren');
+  const [user, setUser] = useState(null);
   return (
     <div>
-      <button onClick={() => {setName('XXX')}}>Button</button>
-      <div>{name}</div>
+      <button onClick={() => {setUser({name: 'zhangsan'})}}>Button</button>
+      <div>{user ? .name}</div>
     </div>
   );
 }
