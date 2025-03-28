@@ -17,7 +17,7 @@ const App = ()=> {
     const[gender,setGender]=useState({value: "male"});
     return (
             <GenderContext.Provider value={gender}>
-                <button onClick={()=>{setGender({value: "female"})}}>toggle</button>
+                <button onClick={()=>{setGender({value: "abc"})}}>toggle</button>
                 <ChildComponent/>
             </GenderContext.Provider>
     )
