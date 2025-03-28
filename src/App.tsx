@@ -1,39 +1,27 @@
 //TypeScript是给每一个变量、形式参数、函数(入参和返回值)定义明确的类型
-//Hook 相关的类型定义, forwardRef, useImperativeHandle
+//Hook 相关的类型定义, useContext
 
-import {forwardRef, ReactNode, useImperativeHandle, useRef} from "react";
 
-type PropsType = {
-    children:  ReactNode
+import {createContext ,useContext, useState} from "react";
+
+
+//GenderContext自动分析出里面是一个字符串
+const GenderContext= createContext("male");
+
+const ChildComponent = ()=> {
+    const gender = useContext(GenderContext);
+    return <div>Dell is {gender}</div>
 }
-type RefType = {
-    start: () => void;
-}
-const Child = forwardRef<any,PropsType>((props, ref)=>{
-  useImperativeHandle(ref,()=>{
-     return {
-         start(){
-             console.log("start")
-         }
-     }
-  })
-    return <div>{props.children}</div>
-});
 
-
-
-
-function App() {
-    const ref = useRef<RefType>(null!);
+const App = ()=> {
+    const[gender,setGender]=useState('male');
     return (
-        <>
-            <button onClick={()=>{
-                ref.current.start()
-            }}>Click</button>
-            <Child ref={ref}>Hello World</Child>
-        </>
-
-    );
+            <GenderContext.Provider value={gender}>
+                <button onClick={()=>{setGender('female')}}>toggle</button>
+                <ChildComponent/>
+            </GenderContext.Provider>
+    )
 }
+
 
 export default App;
