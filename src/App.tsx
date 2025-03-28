@@ -6,18 +6,18 @@ import {createContext ,useContext, useState} from "react";
 
 
 //GenderContext自动分析出里面是一个字符串
-const GenderContext= createContext("male");
+const GenderContext= createContext({value: "male"});
 
 const ChildComponent = ()=> {
     const gender = useContext(GenderContext);
-    return <div>Dell is {gender}</div>
+    return <div>Dell is {gender.value}</div>
 }
 
 const App = ()=> {
-    const[gender,setGender]=useState('male');
+    const[gender,setGender]=useState({value: "male"});
     return (
             <GenderContext.Provider value={gender}>
-                <button onClick={()=>{setGender('female')}}>toggle</button>
+                <button onClick={()=>{setGender({value: "female"})}}>toggle</button>
                 <ChildComponent/>
             </GenderContext.Provider>
     )
