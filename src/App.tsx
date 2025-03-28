@@ -3,7 +3,7 @@
 import {useEffect, useRef} from "react";
 
 function App() {
-    const ref = useRef(null!);
+    const ref = useRef<number | null>(null!);
     useEffect(()=>{
         ref.current = window.setTimeout(()=>{
             console.log('timer');
