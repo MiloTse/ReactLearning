@@ -4,9 +4,12 @@
 
 import {createContext ,useContext, useState} from "react";
 
+type GenderType = {
+    value: 'male' | 'female';
+}
 
 //GenderContext自动分析出里面是一个字符串
-const GenderContext= createContext({value: "male"});
+const GenderContext= createContext<GenderType>({value: "male"});
 
 const ChildComponent = ()=> {
     const gender = useContext(GenderContext);
@@ -14,7 +17,9 @@ const ChildComponent = ()=> {
 }
 
 const App = ()=> {
-    const[gender,setGender]=useState({value: "male"});
+    //also need to add type limitation to state
+    // as state's value will use to value and value has the type limitation
+    const[gender,setGender]=useState<GenderType>({value: "male"});
     return (
             <GenderContext.Provider value={gender}>
                 <button onClick={()=>{setGender({value: "abc"})}}>toggle</button>
