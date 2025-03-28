@@ -3,20 +3,20 @@
 import {useRef} from "react";
 
 function App() {
- const ref = useRef<HTMLDivElement>(null!);
+    const ref = useRef<HTMLDivElement>(null!);
 
- function handleDivClick() {
-   console.log(ref.current.innerHTML);
- }
-  return (
-      <>
+    function handleDivClick() {
+        console.log(ref.current.innerHTML);
+    }
+    return (
+        <>
 
-          <div ref={ref} onClick={handleDivClick}>
-              123
-          </div>
-      </>
+            <div ref={ref} onClick={handleDivClick}>
+                123
+            </div>
+        </>
 
-  );
+    );
 }
 
 export default App;
