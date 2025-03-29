@@ -1,7 +1,7 @@
 
 const App = ()=> {
     function handleClick(e: React.MouseEvent) {
-        console.log(e.target);
+        console.log(e.currentTarget.innerHTML);
     }
 
     return (
