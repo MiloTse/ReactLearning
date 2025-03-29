@@ -1,7 +1,11 @@
 
 const App = ()=> {
+    function handleClick(e) {
+        console.log(e.target.innerHTML);
+    }
+
     return (
-            <div>Hello World</div>
+            <div onClick={handleClick}>Hello World</div>
     )
 }
 
